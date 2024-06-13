@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string("homepage");
             $table->text("tagline");
             $table->unsignedInteger("budget");
-            $table->string('release_date')->nullable();
+            $table->date('release_date')->nullable();
         });
     
 
