@@ -21,29 +21,18 @@ return new class extends Migration
             $table->date('release_date')->nullable();
         });
     
+        Schema::create('starring', function (Blueprint $table) {
+            $table->id("starring_id");
+            $table->unsignedBigInteger('movie_id'); 
+            $table->unsignedBigInteger('personalities_id'); 
+            $table->foreign("movie_id")->references("movie_id")->on("movies")->onDelete("cascade");
+            $table->foreign("personalities_id")->references("personalitie_id")->on("personalities")->onDelete("cascade");
+        });
+    
         Schema::create('personalities', function (Blueprint $table) {
             $table->id("personalitie_id");
             $table->text("name");
             $table->text("popularity");
-        });
-    
-        Schema::create("users_from_app", function (Blueprint $table) {
-            $table->id("user_id");
-            $table->string("username");
-            $table->string("password");
-            $table->string("email");
-            $table->string("right");
-            $table->string('avatar')->nullable();
-            $table->string('badge')->nullable();
-            $table->date('signup_date');
-        });
-    
-        Schema::create('starring', function (Blueprint $table) {
-            $table->id("starring_id");
-            $table->unsignedBigInteger('movie_id'); 
-            $table->unsignedBigInteger('personalitie_id'); 
-            $table->foreign("movie_id")->references("movie_id")->on("movies")->onDelete("cascade");
-            $table->foreign("personalitie_id")->references("personalitie_id")->on("personalities")->onDelete("cascade");
         });
     
         Schema::create("comments", function (Blueprint $table) {
@@ -64,6 +53,17 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id'); 
             $table->foreign("movie_id")->references("movie_id")->on("movies")->onDelete("cascade");
             $table->foreign("user_id")->references("user_id")->on("users_from_app")->onDelete("cascade");
+        });
+    
+        Schema::create("users_from_app", function (Blueprint $table) {
+            $table->id("user_id");
+            $table->string("username");
+            $table->string("password");
+            $table->string("email");
+            $table->string("right");
+            $table->string('avatar')->nullable();
+            $table->string('badge')->nullable();
+            $table->date('signup_date');
         });
     }
     
