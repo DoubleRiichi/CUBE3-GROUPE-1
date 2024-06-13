@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("title");
             $table->string("imdb_id");
             $table->text("overview");
-            $table->string('poster_path')->nullable(false); 
+            $table->string('poster_path'); 
             $table->string("original_language");
             $table->integer("runtime");
             $table->string("status");
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string("homepage");
             $table->text("tagline");
             $table->unsignedInteger("budget");
-            $table->date('release_date')->nullable();
+            $table->string('release_date');
         });
     
 
