@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-    <img src="{{ asset('Assets/Logo movie shelter.webp') }}" alt="logo">
+    <img src="{{ asset('Assets/logo-rectangle2.webp') }}" alt="logo">
     
         <a href="Home">Accueil</a>
         <a href="Shearch">Recherche</a>
@@ -42,8 +42,8 @@ header a{
 }
 
 img {
-height: auto; 
-max-width: 5em;
+ width: 20.9em;
+ height: auto;
 }
 
 </style>
