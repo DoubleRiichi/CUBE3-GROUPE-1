@@ -10,7 +10,7 @@
     <img src="{{ asset('Assets/logo-rectangle2.webp') }}" alt="logo">
     
         <a href="Home">Accueil</a>
-        <a href="Shearch">Recherche</a>
+        <a href="search">Recherche</a>
         <a href="Connexion">Connection</a>
         <a href="Inscription">Inscription</a>
         <style>
