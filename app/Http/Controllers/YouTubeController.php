@@ -3,23 +3,40 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\YouTubeService;
+use GuzzleHttp\Client;
+use App\Models\Movie;
+use Illuminate\Support\Arr;
 
 class YouTubeController extends Controller
 {
-    protected $youtubeService;
-
-    public function __construct(YouTubeService $youtubeService)
+    public function fetchTrailers()
     {
-        $this->youtubeService = $youtubeService;
-    }
+        // Sélectionner aléatoirement 5 films depuis la base de données
+        $movies = Movie::inRandomOrder()->limit(5)->get();
 
-    public function index(Request $request)
-    {
-        $query = $request->input('query', 'latest movies');
-        $trailers = $this->youtubeService->getMovieTrailers($query);
+        // Clé API YouTube
+        $apiKey = env('YOUTUBE_API_KEY');
 
-        return view('youtube.index', compact('trailers'));
+        // Tableau pour stocker les vidéos de YouTube
+        $videos = [];
+
+        // Utilisation de Guzzle HTTP pour appeler l'API YouTube pour chaque titre
+        $client = new Client();
+
+        foreach ($movies as $movie) {
+            $title = $movie->title;
+
+            // Requête à l'API YouTube pour chaque titre de film
+            $response = $client->get("https://www.googleapis.com/youtube/v3/search?key=$apiKey&part=snippet&type=video&maxResults=1&q=$title trailer");
+
+            // Récupérer la première vidéo de la réponse
+            $video = json_decode($response->getBody()->getContents());
+
+            if (isset($video->items[0])) {
+                $videos[] = $video->items[0];
+            }
+        }
+
+        return view('trailers', compact('videos'));
     }
 }
-
