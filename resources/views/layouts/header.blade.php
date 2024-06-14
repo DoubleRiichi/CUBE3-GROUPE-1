@@ -11,12 +11,9 @@
     <img src="{{ asset('Assets/logo-rectangle2.webp') }}" alt="logo">
     
         <a href="Home">Accueil</a>
-        <a href="search">Recherche</a>
-        <a href="Connexion">Connection</a>
-        <a href="Inscription">Inscription</a>
-
-   
-
+        <a href="Search">Recherche</a>
+        <a href="Connection">Connexion</a>
+        <a href="Subscription">Inscription</a>
         <style>
 body {
     margin: 0;

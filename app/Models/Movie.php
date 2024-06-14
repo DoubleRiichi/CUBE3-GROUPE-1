@@ -15,9 +15,9 @@ class Movie extends Model
     public $timestamps = false;
 
 
-    function getMostPopularMovies($limit) {
+    public static function getMostPopularMovies($limit) {
 
-        return Movie::all()->orderBy("popularity")->take($limit)->get();
+        return self::orderBy('popularity', 'desc')->take($limit)->get();
     }
 
 }
