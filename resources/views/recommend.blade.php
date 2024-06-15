@@ -1,23 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Recommendations</title>
 </head>
 <body>
-    <h1>Get Movie Recommendations</h1>
-    <form method="POST" action="/recommend">
-        @csrf
-        <label for="user_input">What kind of movies do you like?</label>
-        <textarea name="user_input" id="user_input" rows="4" cols="50"></textarea>
-        <br>
-        <button type="submit">Get Recommendations</button>
-    </form>
+    <h1>Movie Recommendations</h1>
+    <h2>Here are some movies:</h2>
+    <ul>
+        @foreach ($movies as $movie)
+            <li>{{ $movie->title }}</li>
+        @endforeach
+    </ul>
 
-    @if (isset($recommendedMovie))
-        <h2>Recommended Movies:</h2>
-        <p>{{ $recommendedMovie }}</p>
-    @endif
+    <h2>Recommendation:</h2>
+    <pre>{{ print_r($recommendation, true) }}</pre>
 </body>
 </html>

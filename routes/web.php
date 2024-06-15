@@ -11,4 +11,8 @@ use App\Http\Controllers\YouTubeController;
 
 Route::get('/trailers', [YouTubeController::class, 'fetchTrailers']);
 
+use App\Http\Controllers\RecommendationController;
+
+Route::get('/recommend', [RecommendationController::class, 'recommend']);
+
 
