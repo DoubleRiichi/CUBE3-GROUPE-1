@@ -4,8 +4,8 @@
     <title>Movie Recommendations</title>
 </head>
 <body>
-    <h1>Movie Recommendations</h1>
-    <h2>Here are some movies:</h2>
+    <h1>Films recommandés</h1>
+    <h2>Voici les films recommandé :</h2>
     <ul>
         @foreach ($movies as $movie)
             <li>{{ $movie->title }}</li>
@@ -13,6 +13,6 @@
     </ul>
 
     <h2>Recommendation:</h2>
-    <pre>{{ print_r($recommendation, true) }}</pre>
+    <p>{{ $recommendation }}</p>
 </body>
 </html>

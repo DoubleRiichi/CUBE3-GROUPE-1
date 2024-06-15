@@ -16,12 +16,12 @@ class RecommendationController extends Controller
 
         try {
             $huggingFaceService = new HuggingFaceService();
-            $recommendation = $huggingFaceService->getRecommendation($prompt);
+            $response = $huggingFaceService->getRecommendation($prompt);
+            $recommendation = $response[0]['generated_text'] ?? 'No recommendation available';
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
 
-        // Passer la réponse brute à la vue
         return view('recommend', [
             'movies' => $movies,
             'recommendation' => $recommendation,
