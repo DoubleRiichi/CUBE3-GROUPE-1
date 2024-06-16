@@ -13,6 +13,8 @@ Route::get('/trailers', [YouTubeController::class, 'fetchTrailers']);
 
 use App\Http\Controllers\RecommendationController;
 
-Route::get('/recommend', [RecommendationController::class, 'recommend']);
+Route::get('/recommendation-form', [RecommendationController::class, 'showForm'])->name('showForm');
+Route::post('/recommend', [RecommendationController::class, 'recommend'])->name('recommend');
+
 
 
