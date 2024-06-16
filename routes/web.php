@@ -18,3 +18,4 @@ Route::post('/recommend', [RecommendationController::class, 'recommend'])->name(
 
 
 
+

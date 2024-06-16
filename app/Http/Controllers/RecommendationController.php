@@ -27,7 +27,7 @@ class RecommendationController extends Controller
 
         // Données JSON à envoyer à l'API Hugging Face
         $requestData = [
-            'inputs' => "Voici quelques films dans le genre '$genre':...",
+            'inputs' => "Donne-moi quelques recommandations de films dans le genre '$genre', en français, s'il te plaît.",
         ];
 
         try {
