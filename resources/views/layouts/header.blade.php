@@ -21,7 +21,8 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: Georgia, serif;
-    
+    background-size: cover;
+    position : absolute;
 }
 
 
