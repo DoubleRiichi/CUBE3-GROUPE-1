@@ -15,3 +15,9 @@ Route::get('/trailers', [YouTubeController::class, 'fetchTrailers']);
 Route::get('/search', function () {
     return redirect('/trailers');
 });
+
+
+
+
+#DEBUG
+Route::get("/test/{id}/{first_date}/{second_date}/{language}/{status} ", [HomeController::class, "testMovieModel"]);
