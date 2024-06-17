@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body style="background-image: url('{{ asset('Assets/background.webp') }}')" >
-
+<body >
     <header>
     <img src="{{ asset('Assets/logo-rectangle2.webp') }}" alt="logo">
     
         <a href="Home">Accueil</a>
-        <a href="search">Recherche</a>
-        <a href="Connexion">Connection</a>
-        <a href="Inscription">Inscription</a>
-
-   
-
-        <style>
+        <a href="Search">Recherche</a>
+        <a href="Connection">Connexion</a>
+        <a href="Subscription">Inscription</a>
+<style>
 body {
+    
+    background-image: url('{{ asset('Assets/background.webp') }}');
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Georgia, serif;
+    
 }
 
 
@@ -44,6 +44,7 @@ header a{
     padding: 0em 5em;
     display: flex inline;
     text-wrap: break-word;
+    text-decoration: none;
     
 }
 
