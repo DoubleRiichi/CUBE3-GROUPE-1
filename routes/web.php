@@ -15,3 +15,4 @@ Route::get('/trailers', [YouTubeController::class, 'fetchTrailers']);
 Route::get('/search', function () {
     return redirect('/trailers');
 });
+
