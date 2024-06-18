@@ -12,7 +12,7 @@
     color: white;
     height: 3em;
     bottom: 0;
-    
+    position: absolute;
 }
 
 footer a{
