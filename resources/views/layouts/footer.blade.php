@@ -11,8 +11,7 @@
     background-color: #333;
     color: white;
     height: 3em;
-    bottom: 0;
-    position: absolute;
+    position: bottom;
 }
 
 footer a{
