@@ -8,7 +8,7 @@ use App\Http\Controllers\YouTubeController;
 
 
 Route::get('/', [HomeController::class, 'index']);
-
+Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/trailers', [YouTubeController::class, 'fetchTrailers']);
 
