@@ -1,0 +1,32 @@
+div#register-form {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: whitesmoke;
+  border: 0.1em, solid, black;
+  padding: 2em;
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  justify-content: center;
+}
+
+#register-form div {
+  margin: 1em;
+} 
+
+#register-form button {
+  background-color: brown;
+  padding: 0.5em;
+  color: white;
+}
+
+#register-form button:hover {
+  background-color: rgb(83, 23, 23);
+  padding: 0.5em;
+  color: white;
+}
+
+
+#register-form label {
+  
+}

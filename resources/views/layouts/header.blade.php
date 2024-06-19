@@ -5,33 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body >
-    <header>
-    <img src="{{ asset('Assets/logo-rectangle2.webp') }}" alt="logo">
-    
-        <a href="Home">Accueil</a>
-        <a href="Search">Recherche</a>
-        <a href="Connection">Connexion</a>
-        <a href="Subscription">Inscription</a>
+<body>
 <style>
 body {
-    
+
     background-image: url('{{ asset('Assets/background.webp') }}');
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: Georgia, serif;
     background-size: cover;
-    position : absolute;
+    ;
 }
 
 
 
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    padding: 0em 0em;
     background-color: #333;
     color: white;
     height: 5em;
@@ -43,16 +34,45 @@ header a{
     font-size : 1em;
     justify-content: space-between;
     padding: 0em 5em;
-    display: flex inline;
     text-wrap: break-word;
     text-decoration: none;
     
 }
 
-img {
+header a:hover{
+
+    
+}
+
+header div {
+    padding-top: 2em;
+    padding-bottom: 2em;
+
+}
+header div:hover {
+    text-transform: capitalize;
+    background-color: #555555;
+}
+
+header img {
  width: 20.9em;
  height: auto;
 }
 
 </style>
-    </header>   
+<header>
+    <img src="{{ asset('Assets/logo-rectangle2.webp') }}" alt="logo">        
+     <div>
+        <a href="Home">Accueil</a>
+    </div>
+    <div>
+        <a href="Search">Recherche</a>
+    </div>
+    <div>     
+        <a href="Connection">Connexion</a>
+    </div>     
+    <div>
+        <a href="register">Inscription</a>
+    </div>    
+</header>   
+    <br>

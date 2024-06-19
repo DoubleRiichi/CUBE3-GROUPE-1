@@ -17,5 +17,5 @@ Route::get('/search', function () {
     return redirect('/trailers');
 });
 
-Route::get('/Subscription',[RegisterController::class,'showRegistrationForm'])->name('register');;
+Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name('register');;
 
