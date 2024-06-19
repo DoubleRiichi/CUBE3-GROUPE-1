@@ -9,7 +9,7 @@ class Movie extends Model
 {
     use HasFactory;
 
-    protected $table = "comment";
+    protected $table = "comments";
     protected $primaryKey = "id";
     public $timestamps = false;
 
