@@ -51,7 +51,7 @@ class User extends Authenticatable
         ];
     }
 
-    public static function ByID($id) {
+    public static function ById($id) {
 
         return self::find($id);
     }
