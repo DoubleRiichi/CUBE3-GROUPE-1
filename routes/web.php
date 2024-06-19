@@ -18,6 +18,7 @@ Route::get('/search', function () {
     return redirect('/trailers');
 });
 
-Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name('register');;
+Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name('register');
+Route::post('/register',[RegisterController::class,'register'])->name('register');
 
 Route::get("/movie/{movie_id}", [MovieDetailsController::class, "show"]);

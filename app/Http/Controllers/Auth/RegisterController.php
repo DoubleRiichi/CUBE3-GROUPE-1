@@ -45,6 +45,6 @@ class RegisterController extends Controller
 
         // auth()->login($user);
 
-        return redirect()->route('home')->with('success', 'Registration successful.');
+        return redirect('/home');
     }
 }
