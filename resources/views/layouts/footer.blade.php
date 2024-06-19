@@ -2,7 +2,6 @@
     <a href="Contact">Contact </a>
 <style>
     footer {
-    bottom: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -11,7 +10,9 @@
     background-color: #333;
     color: white;
     height: 3em;
-    position: bottom;
+    position:fixed;
+    left:0px;
+    bottom:0px;
 }
 
 footer a{
