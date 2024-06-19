@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?php 
+        use Illuminate\Support\Facades\Route;
+        echo Route::currentRouteName() ?></title>
+    
 </head>
 <body>
 <style>
@@ -26,7 +29,11 @@ header {
     background-color: #333;
     color: white;
     height: 5em;
-    top : 0;
+    width: 100%;
+    top : 0px;
+    position:fixed;
+    left:0px;
+
 }
 
 header a{
@@ -63,16 +70,16 @@ header img {
 <header>
     <img src="{{ asset('Assets/logo-rectangle2.webp') }}" alt="logo">        
      <div>
-        <a href="Home">Accueil</a>
+        <a href="/home">Accueil</a>
     </div>
     <div>
-        <a href="Search">Recherche</a>
+        <a href="/Search">Recherche</a>
     </div>
     <div>     
-        <a href="Connection">Connexion</a>
+        <a href="/Connection">Connexion</a>
     </div>     
     <div>
-        <a href="register">Inscription</a>
+        <a href="/register">Inscription</a>
     </div>    
 </header>   
     <br>
