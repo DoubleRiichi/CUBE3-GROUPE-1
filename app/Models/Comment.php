@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Movie extends Model
+class Comment extends Model
 {
     use HasFactory;
 
@@ -49,6 +49,13 @@ class Movie extends Model
 
       return self::where([["movie_id", "=", $movieId],
                           ["user_id"], "=", $userId])->limit($limit)->get();
+    }
+
+    public static function JoinCommentAndUser($movieId) {
+
+      return self::select("*", "users.created_at as user_created_at", "users.updated_at as user_updated_at")
+                          ->where("movie_id", "=", $movieId)
+                          ->join("users", "users.id", "=", "comments.user_id")->get();
     }
 
 }
