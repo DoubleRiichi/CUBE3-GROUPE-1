@@ -13,6 +13,9 @@ class MovieDetailsController extends Controller
     public function show($movie_id) {
       //add error handling
       $movie = Movie::ById($movie_id);
+      if($movie == null) {
+        abort(404);
+      } 
       $comments = Comment::JoinCommentAndUser($movie->id);
       
       return view("movie-details", compact("movie", "comments"));
