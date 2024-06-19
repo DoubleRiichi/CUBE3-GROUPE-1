@@ -8,7 +8,7 @@ use App\Http\Controllers\YouTubeController;
 
 
 Route::get('/', [HomeController::class, 'index']);
-
+Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/trailers', [YouTubeController::class, 'fetchTrailers']);
 
@@ -18,9 +18,6 @@ Route::get('/recommendation-form', [RecommendationController::class, 'showForm']
 Route::post('/recommend', [RecommendationController::class, 'recommend'])->name('recommend');
 
 
-//retourne la vue trailer en cliquant sur Recherche
-Route::get('/search', function () {
-    return redirect('/trailers');
-});
+Route::get('/Subscription',[RegisterController::class,'showRegistrationForm'])->name('register');
 
-Route::get('/Subscription',[RegisterController::class,'showRegistrationForm'])->name('register');;
+Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name('register');

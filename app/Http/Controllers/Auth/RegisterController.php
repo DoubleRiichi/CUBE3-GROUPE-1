@@ -13,7 +13,7 @@ class RegisterController extends Controller
 {
     public function showRegistrationForm()
     {
-        return view('auth');
+        return view('register');
     }
 
     public function register(Request $request)

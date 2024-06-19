@@ -1,13 +1,16 @@
 @extends('layouts.mainlayout')
 
 @section('content')
-    <style>
+<style>
         .movie-list {
             display: flex;
-            flex-wrap: nowrap; /* Empêche le passage à la ligne */
-            overflow-x: auto; /* Défilement horizontal si nécessaire */
+            flex-wrap: wrap; /* Empêche le passage à la ligne */
+             /* Défilement horizontal si nécessaire */
             padding: 0;
             margin: 0;
+            background-color: rgba(255, 255, 255, .7);
+            border: 1m solid;
+            justify-content: center;
         }
         .movie-item {
             flex: 0 0 auto; /* Permet aux éléments de se réduire si nécessaire */
@@ -21,8 +24,10 @@
             max-width: 70%;
             height: auto;
         }
+
+
     </style>
-    
+<div id="movie-container">
     <h1>Les films les plus populaires</h1>
     <div class="movie-list">
         @foreach ($mostPopularMovies as $movie)
@@ -36,4 +41,6 @@
             </div>
         @endforeach
     </div>
+</div>
+
 @endsection
