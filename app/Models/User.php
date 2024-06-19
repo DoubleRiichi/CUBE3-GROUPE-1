@@ -50,4 +50,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public static function ByID($id) {
+
+        return self::find($id);
+    }
+
+    public static function ByEmail($email) {
+        
+        return self::where("email", "=", $email)->get();
+    }
 }
