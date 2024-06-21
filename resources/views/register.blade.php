@@ -53,6 +53,8 @@
         <div>
             <button type="submit">Register</button>
         </div>
+
     </form>
+    <a href="{{ route('auth.google') }}" class="btn btn-primary">Register with Google</a>
 </div>
 @endsection

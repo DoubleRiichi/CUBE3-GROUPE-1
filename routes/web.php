@@ -21,4 +21,8 @@ Route::get('/search', function () {
 Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name('register');
 Route::post('/register',[RegisterController::class,'register'])->name('register');
 
+Route::get('auth/google', [RegisterController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [RegisterController::class, 'handleGoogleCallback']);
+
+
 Route::get("/movie/{movie_id}", [MovieDetailsController::class, "show"]);
