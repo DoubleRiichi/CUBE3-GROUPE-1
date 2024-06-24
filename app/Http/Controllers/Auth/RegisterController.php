@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+use Exception;
 
 class RegisterController extends Controller
 {
@@ -45,6 +47,41 @@ class RegisterController extends Controller
 
         // auth()->login($user);
 
-        return redirect()->route('home')->with('success', 'Registration successful.');
+        return redirect('/home');
+    }
+
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        try {
+            $googleUser = Socialite::driver('google')->user();
+            $user = User::where('email', $googleUser->getEmail())->first();
+
+            if ($user) {
+                Auth::login($user);
+                return redirect()->route('home');
+            } else {
+                // Créez un nouvel utilisateur avec les informations de Google
+                $user = User::create([
+                    'name' => $googleUser->getName(),
+                    'email' => $googleUser->getEmail(),
+                    'password' => Hash::make('default-google-password'), // ou un autre mot de passe sécurisé
+                    'username' => $googleUser->getNickname() ?: $googleUser->getName(),
+                    'permissions' => null,
+                    'avatar' => $googleUser->getAvatar(),
+                    'badge' => null,
+                ]);
+
+                Auth::login($user);
+                return redirect()->route('home');
+            }
+
+        } catch (Exception $e) {
+            return redirect()->route('register')->with('error', 'Something went wrong. Please try again.');
+        }
     }
 }
