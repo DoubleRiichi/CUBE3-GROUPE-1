@@ -52,7 +52,7 @@ class Comment extends Model
 
     public static function JoinCommentAndUser($movieId) {
 
-      return self::select("*", "users.created_at as user_created_at", "users.updated_at as user_updated_at")
+      return self::select("comments.*", "users.created_at as user_created_at", "users.updated_at as user_updated_at")
                           ->where("movie_id", "=", $movieId)
                           ->join("users", "users.id", "=", "comments.user_id")->orderByDesc("created_at")->get();
     }
