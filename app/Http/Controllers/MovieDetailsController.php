@@ -6,6 +6,7 @@ use App\Models\Movie;
 use App\Models\User;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class MovieDetailsController extends Controller
@@ -18,13 +19,19 @@ class MovieDetailsController extends Controller
       } 
       $comments = Comment::JoinCommentAndUser($movie->id);
       
-      return view("movie-details", compact("movie", "comments"));
+      if(Auth::check()) {
+        $current_user = Auth::user(); 
+      } else {
+        $current_user = null;
+      }
+
+      return view("movie-details", compact("movie", "comments", "current_user"));
     }
 
 
     public function writeComment($movie_id, Request $request) {
       $comment = new Comment;
-      $comment->user_id = 1;
+      $comment->user_id = Auth::id(); #get logged in user id
       $comment->movie_id = $movie_id;
       $comment->content = filter_var($request->content, FILTER_SANITIZE_SPECIAL_CHARS);
       

@@ -61,7 +61,56 @@
   border: 0.1em solid black;
   background-color: rgb(233, 231, 231);
   margin: 1em;
+
+ /* change this to row instead of 'column' */
+
 }
+
+.user-info {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-self: flex-start;
+  width: 10%;
+  padding: 0.2em;
+
+}
+
+.user-info .username {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+
+.user-comment {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  
+  flex-grow: 1; 
+  align-self:flex-end;
+  width: 88%;
+}
+
+.comment-date {
+  padding: 0;
+  float: right;
+  text-align: right;
+  font-style: italic;
+  color: rgba(95, 84, 84, 0.685);
+}
+
+.comment-text {
+  border: 0.1em solid black;
+  padding: 0.4em;
+  background-color: white;
+  min-height: 10em;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1.1em;
+  text-wrap: wrap;
+  
+}
+
 
 .no-comment {
   font-size: 15px;
@@ -82,3 +131,5 @@
   padding: 1em;
 
 }
+
+

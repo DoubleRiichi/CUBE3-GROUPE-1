@@ -35,35 +35,38 @@
     <div id="comments-list">
       <h2>Commentaires</h2>
       <!--TODO: add a way to get the current login user ID, and check if they're connected -->
-      <button id="show-comment-form">Commenter</button>
-      @if ($errors->any())
-      <div id="error-box">
-              @foreach ($errors->all() as $error)
-                  <p>{{ $error }}</p>
-              @endforeach
-      </div>
+      @if($current_user)  
+        <button id="show-comment-form">Commenter</button>
+        @if ($errors->any())
+        <div id="error-box">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+        </div>
+        @endif
+        <form id="comment-form" method="POST" action="/movie/{{$movie->id}}" hidden>
+          @csrf
+          <textarea name="content" id="content" cols="100" rows="10"></textarea>
+          <br>
+          <input type="submit" value="Poster">
+        </form>
       @endif
-      <form id="comment-form" method="POST" action="/movie/{{$movie->id}}" hidden>
-        @csrf
-        <textarea name="content" id="content" cols="100" rows="10"></textarea>
-        <br>
-        <input type="submit" value="Poster">
-      </form>
-      
 
       @if (!empty($comments))
         @foreach ($comments as $comment)
           <div class="comment">
             <div class="user-info">
-              <p class="username"> {{$comment->username}} </p>
-              <p class=""> {{$comment->user_created_at}} </p>
+              <span class="username"> {{$comment->username}}</span>
+              <span  class=""> {{substr($comment->user_created_at, 0, 10)}}</span>
               <img src="" alt="avatar">
-              <p>{{$comment->badge}}</p>
+              <span>{{$comment->badge}}</span>
             </div>
             <div class="user-comment">
-              <p> {{$comment->created_at}}</p>
-              <p>{{$comment->updated_at}}</p>
-              <p class="text">{{$comment->content}}</p>
+              <div class="comment-date">
+                <span>Posted: {{$comment->created_at}}</span>
+                <span>Edited: {{$comment->updated_at}}</span>
+              </div>
+              <pre class="comment-text">{{html_entity_decode($comment->content)}}</pre>
               <!-- add a signature ? -->
               
             </div>
