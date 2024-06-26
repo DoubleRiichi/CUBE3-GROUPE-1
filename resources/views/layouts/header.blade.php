@@ -17,7 +17,9 @@ body {
     padding: 0;
     font-family: Georgia, serif;
     background-size: cover;
-    ;
+    background-attachment: fixed;
+
+    
 }
 
 

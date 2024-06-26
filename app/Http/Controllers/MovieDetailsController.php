@@ -21,4 +21,20 @@ class MovieDetailsController extends Controller
       return view("movie-details", compact("movie", "comments"));
     }
 
+
+    public function writeComment($movie_id, Request $request) {
+      $comment = new Comment;
+      $comment->user_id = 1;
+      $comment->movie_id = $movie_id;
+      $comment->content = filter_var($request->content, FILTER_SANITIZE_SPECIAL_CHARS);
+      
+      if(empty($request->content)) {
+        return redirect()->back()->withErrors("Un commentaire ne peut pas être vide!");
+      }
+      
+      $comment->save();
+
+      return redirect("/movie/$movie_id");
+    }
+
 }

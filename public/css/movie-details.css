@@ -66,3 +66,19 @@
 .no-comment {
   font-size: 15px;
 }
+
+#show-comment-form {
+  margin-bottom: 2em;
+  width: 8em;
+  height: 1.5em;
+}
+
+
+#error-box {
+  color: rgb(187, 50, 50);
+  font-style: italic;
+  background-color: white;
+  border: 0.1em solid, rgb(187, 50, 50);
+  padding: 1em;
+
+}
