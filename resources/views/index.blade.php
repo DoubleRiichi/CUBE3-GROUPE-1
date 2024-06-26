@@ -34,7 +34,7 @@
             <div class="movie-item">
                 <h3><a href="./movie/{{$movie->id}}">{{stripslashes($movie->title)}}</a></h3>
                 @if($movie->poster_path)
-                    <img src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}" alt="{{ $movie->title }} poster">
+                <a href="./movie/{{$movie->id}}"><img src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}" alt="{{ $movie->title }} poster"><a href=""></a>
                 @else
                     <p>No poster available</p>
                 @endif
