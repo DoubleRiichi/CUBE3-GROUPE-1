@@ -9,11 +9,15 @@ class ListingTableSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('listing')->insert([
-            'status' => 'Watched',
-            'note' => 5,
-            'movie_id' => 1, // Assurez-vous que le film avec l'ID 1 existe
-            'user_id' => 1, // Assurez-vous que l'utilisateur avec l'ID 1 existe
+        DB::table('listing_movies')->insert([
+            'status' => 'À voir',
+            'movie_id' => 5, // Assurez-vous que le film avec l'ID 1 existe
+            'user_id' => 2, // Assurez-vous que l'utilisateur avec l'ID 1 existe
+        ]);
+        DB::table('listing_movies')->insert([
+            'status' => 'À voir',
+            'movie_id' => 6, // Assurez-vous que le film avec l'ID 1 existe
+            'user_id' => 2, // Assurez-vous que l'utilisateur avec l'ID 1 existe
         ]);
     }
 }
