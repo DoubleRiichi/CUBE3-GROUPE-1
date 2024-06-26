@@ -73,13 +73,18 @@ header img {
     <a href="/home"><div>Accueil</div></a>
     
     
-    <a href="/Search"><div>Recherche</div></a>
+    <a href="/search"><div>Recherche</div></a>
     
-         
-    <a href="/Connection"><div>Connexion</div></a>
-    
-    
-    <a href="/register"><div>Inscription</div></a>
-        
+    <?php use Illuminate\Support\Facades\Auth;
+      $user = Auth::check();
+    ?>
+    @if($user)     
+        <a href="/list/{{Auth::id()}}"><div>Ma liste</div></a>
+        <a href="/profile/{{Auth::id()}}"><div>Profil</div></a>
+        <a href="/logout"><div>Deconnexion</div></a>
+    @else
+        <a href="/login"><div>Connexion</div></a>
+        <a href="/register"><div>Inscription</div></a>
+    @endif
 </header>   
     <br>

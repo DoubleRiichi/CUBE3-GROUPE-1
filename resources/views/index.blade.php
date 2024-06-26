@@ -7,9 +7,9 @@
             flex-wrap: wrap; /* Empêche le passage à la ligne */
              /* Défilement horizontal si nécessaire */
             padding: 0;
-            margin: 0;
+            margin: 1em;
             background-color: rgba(255, 255, 255, .7);
-            border: 1em solid;
+            border: 0.1em solid;
             justify-content: center;
         }
         .movie-item {
