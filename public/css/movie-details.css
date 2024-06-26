@@ -16,7 +16,6 @@
 #movie-details img {
   display: flex;
   justify-self: left;
-  width: 20%;
   height: auto;
 }
 
@@ -24,112 +23,45 @@
   justify-content: left;
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 /* #up h2, p {
   display: flex;
 } */
-#up p {
+#up p, #up pre{
   padding: 1em;
-  background-color: rgba(190, 186, 181, 0.658);
+  background-color: rgb(255, 255, 255);
+  border: 0.2em solid black;
+  margin: 1em;
+  text-wrap: wrap;
+
+}
+
+#recap {
+  flex-direction: column;
+}
+
+#movie-details h2 span {
+  font-size: medium;
+  color: rgba(100, 96, 96, 0.952);
+  font-style: italic;
+
+}
+
+#bottom p{
+    
+  background: none;
+  border: none;
+}
+
+#bottom {
+
+  background-color: rgb(255, 255, 255);
   border: 0.2em solid black;
   margin: 1em;
 }
 
-#up h2 span {
-  font-size: medium;
-  color: rgba(34, 29, 29, 0.979);
-  font-style: italic;
-
+#bottom p {
+  padding: 0.2
 }
-
-
-#comments-list {
-  padding: 2em;
-  background-color: whitesmoke;
-  border: 0.1em solid black;
-  width: 80%;
-  height: 80%;
-  margin: auto;
-  margin-top: 6em;
-  margin-bottom: 6em;
-}
-
-.comment {
-  padding: 1em;
-  border: 0.1em solid black;
-  background-color: rgb(233, 231, 231);
-  margin: 1em;
-
- /* change this to row instead of 'column' */
-
-}
-
-.user-info {
-  display: inline-flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-self: flex-start;
-  width: 10%;
-  padding: 0.2em;
-
-}
-
-.user-info .username {
-  font-weight: bold;
-  font-size: 1.1em;
-}
-
-
-.user-comment {
-  display: inline-flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  
-  flex-grow: 1; 
-  align-self:flex-end;
-  width: 88%;
-}
-
-.comment-date {
-  padding: 0;
-  float: right;
-  text-align: right;
-  font-style: italic;
-  color: rgba(95, 84, 84, 0.685);
-}
-
-.comment-text {
-  border: 0.1em solid black;
-  padding: 0.4em;
-  background-color: white;
-  min-height: 10em;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 1.1em;
-  text-wrap: wrap;
-  
-}
-
-
-.no-comment {
-  font-size: 15px;
-}
-
-#show-comment-form {
-  margin-bottom: 2em;
-  width: 8em;
-  height: 1.5em;
-}
-
-
-#error-box {
-  color: rgb(187, 50, 50);
-  font-style: italic;
-  background-color: white;
-  border: 0.1em solid, rgb(187, 50, 50);
-  padding: 1em;
-
-}
-
-

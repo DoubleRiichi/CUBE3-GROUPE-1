@@ -3,8 +3,9 @@
 @section("content")
 
 <link rel="stylesheet" href="{{ asset("css/movie-details.css")}}">
-
+<link rel="stylesheet" href="{{ asset("css/comments.css")}}">
     <div id="movie-details">
+    <h2>{{ stripslashes($movie->title) }}  <span> {{ stripslashes($movie->original_title) }}</span></h2>
 
       <div id="up">
       @if ($movie->poster_path)
@@ -12,22 +13,24 @@
       @else
           <br> <!-- Show a stock picture instead -->
       @endif
-        <h2>{{ stripslashes($movie->title) }}  <span> {{ stripslashes($movie->original_title) }}</span></h2>
-      @if ($movie->tagline)
+      <div id="recaps">
+        @if ($movie->tagline)
         <p>{{stripslashes($movie->tagline)}}</p>
       @endif
       @if ($movie->overview)
         <p>{{stripslashes($movie->overview)}}</p>
       @endif
-      </div>
+     
       <div id="bottom">
-        <p>{{$movie->original_language}}</p>
-        <p>{{$movie->release_date}}</p>
-        <p>{{$movie->status}}</p>
-        <p>{{$movie->homepage}}</p>
-        <p>{{$movie->runtime}}</p>
-        <p>{{$movie->budget}}</p>
-        <p>{{$movie->popularity}}</p>
+        <p>Langue Originale : {{$movie->original_language}}</p>
+        <p>Date de Sortie : {{$movie->release_date}}</p>
+        <p>Status : {{$movie->status}}</p>
+        <p>Page Officielle : <a href="{{$movie->homepage}}">{{$movie->homepage}}</a></p>
+        <p>Durée : {{$movie->runtime}} minutes</p>
+        <p>Budget : {{$movie->budget}}$</p>
+        <p>Popularité : {{$movie->popularity}}</p>
+      </div>  
+      </div>
       </div>
     </div>
 
@@ -76,5 +79,7 @@
           <p class="no-comment">Be the first to comment!</p>
       @endif
     </div>
-    <script src="{{asset("js/movieDetails.js")}}"></script>
+    @if($current_user)  
+      <script src="{{asset("js/movieDetails.js")}}"></script>
+    @endif
 @endsection
