@@ -9,7 +9,7 @@
             padding: 0;
             margin: 0;
             background-color: rgba(255, 255, 255, .7);
-            border: 1m solid;
+            border: 1em solid;
             justify-content: center;
         }
         .movie-item {
