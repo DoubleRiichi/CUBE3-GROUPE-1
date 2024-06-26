@@ -49,18 +49,16 @@ header a{
 }
 
 header a:hover{
-
+    
+    background-color: #555555;
     
 }
 
 header div {
     padding-top: 2em;
     padding-bottom: 2em;
+    width: auto;
 
-}
-header div:hover {
-    text-transform: capitalize;
-    background-color: #555555;
 }
 
 header img {
@@ -71,17 +69,17 @@ header img {
 </style>
 <header>
     <img src="{{ asset('Assets/logo-rectangle2.webp') }}" alt="logo">        
-     <div>
-        <a href="/home">Accueil</a>
-    </div>
-    <div>
-        <a href="/Search">Recherche</a>
-    </div>
-    <div>     
-        <a href="/Connection">Connexion</a>
-    </div>     
-    <div>
-        <a href="/register">Inscription</a>
-    </div>    
+     
+    <a href="/home"><div>Accueil</div></a>
+    
+    
+    <a href="/Search"><div>Recherche</div></a>
+    
+         
+    <a href="/Connection"><div>Connexion</div></a>
+    
+    
+    <a href="/register"><div>Inscription</div></a>
+        
 </header>   
     <br>
