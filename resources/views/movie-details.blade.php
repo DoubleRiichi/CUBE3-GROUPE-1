@@ -56,15 +56,17 @@
         @foreach ($comments as $comment)
           <div class="comment">
             <div class="user-info">
-              <p class="username"> {{$comment->username}} </p>
-              <p class=""> {{$comment->user_created_at}} </p>
+              <span class="username"> {{$comment->username}}</span>
+              <span  class=""> {{substr($comment->user_created_at, 0, 10)}}</span>
               <img src="" alt="avatar">
-              <p>{{$comment->badge}}</p>
+              <span>{{$comment->badge}}</span>
             </div>
             <div class="user-comment">
-              <p> {{$comment->created_at}}</p>
-              <p>{{$comment->updated_at}}</p>
-              <p class="text">{{$comment->content}}</p>
+              <div class="comment-date">
+                <span>Posted: {{$comment->created_at}}</span>
+                <span>Edited: {{$comment->updated_at}}</span>
+              </div>
+              <pre class="comment-text">{{html_entity_decode($comment->content)}}</pre>
               <!-- add a signature ? -->
               
             </div>
