@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ListingController;
 use App\Http\Controllers\MovieDetailsController;
 use App\Http\Controllers\YouTubeController;
 
@@ -34,3 +35,6 @@ Route::get('auth/google/callback', [RegisterController::class, 'handleGoogleCall
 
 Route::get("/movie/{movie_id}", [MovieDetailsController::class, "show"]);
 Route::post("/movie/{movie_id}", [MovieDetailsController::class, "writeComment"]);
+
+
+Route::get("/list/{user_id}", [ListingController::class, "show"]);
