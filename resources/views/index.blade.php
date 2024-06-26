@@ -32,7 +32,7 @@
     <div class="movie-list">
         @foreach ($mostPopularMovies as $movie)
             <div class="movie-item">
-                <h3>{{ stripslashes($movie->title) }}</h3>
+                <h3><a href="./movie/{{$movie->id}}">{{stripslashes($movie->title)}}</a></h3>
                 @if($movie->poster_path)
                     <img src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}" alt="{{ $movie->title }} poster">
                 @else
