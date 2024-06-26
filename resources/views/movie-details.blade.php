@@ -8,16 +8,16 @@
 
       <div id="up">
       @if ($movie->poster_path)
-        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}" alt="{{ $movie->title }} poster">
+        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}" alt="{{ stripslashes($movie->title) }} poster">
       @else
           <br> <!-- Show a stock picture instead -->
       @endif
-        <h2>{{ $movie->title }}  <span> {{ ($movie->original_title) }}</span></h2>
+        <h2>{{ stripslashes($movie->title) }}  <span> {{ stripslashes($movie->original_title) }}</span></h2>
       @if ($movie->tagline)
-        <p>{{$movie->tagline}}</p>
+        <p>{{stripslashes($movie->tagline)}}</p>
       @endif
       @if ($movie->overview)
-        <p>{{$movie->overview}}</p>
+        <p>{{stripslashes($movie->overview)}}</p>
       @endif
       </div>
       <div id="bottom">
