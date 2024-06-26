@@ -33,8 +33,24 @@
 
 
     <div id="comments-list">
-      <h2>Comments</h2>
+      <h2>Commentaires</h2>
+      <!--TODO: add a way to get the current login user ID, and check if they're connected -->
+      <button id="show-comment-form">Commenter</button>
+      @if ($errors->any())
+      <div id="error-box">
+              @foreach ($errors->all() as $error)
+                  <p>{{ $error }}</p>
+              @endforeach
+      </div>
+      @endif
+      <form id="comment-form" method="POST" action="/movie/{{$movie->id}}" hidden>
+        @csrf
+        <textarea name="content" id="content" cols="100" rows="10"></textarea>
+        <br>
+        <input type="submit" value="Poster">
+      </form>
       
+
       @if (!empty($comments))
         @foreach ($comments as $comment)
           <div class="comment">
@@ -57,4 +73,5 @@
           <p class="no-comment">Be the first to comment!</p>
       @endif
     </div>
+    <script src="{{asset("js/movieDetails.js")}}"></script>
 @endsection

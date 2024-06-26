@@ -26,3 +26,4 @@ Route::get('auth/google/callback', [RegisterController::class, 'handleGoogleCall
 
 
 Route::get("/movie/{movie_id}", [MovieDetailsController::class, "show"]);
+Route::post("/movie/{movie_id}", [MovieDetailsController::class, "writeComment"]);

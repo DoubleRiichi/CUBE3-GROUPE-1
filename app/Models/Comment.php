@@ -11,7 +11,6 @@ class Comment extends Model
 
     protected $table = "comments";
     protected $primaryKey = "id";
-    public $timestamps = false;
 
 
     public static function ById($id) {
