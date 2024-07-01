@@ -80,7 +80,7 @@ header img {
     ?>
     @if($user)     
         <a href="/list/{{Auth::id()}}"><div>Ma liste</div></a>
-        <a href="/profile/{{Auth::id()}}"><div>Profil</div></a>
+        <a href="{{ route('profile.show', ['name' => Auth::user()->name]) }}"><div>Profil</div></a>
         <a href="/logout"><div>Deconnexion</div></a>
     @else
         <a href="/login"><div>Connexion</div></a>
