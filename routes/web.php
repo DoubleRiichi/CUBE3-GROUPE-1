@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListingController;
@@ -38,3 +39,5 @@ Route::post("/movie/{movie_id}", [MovieDetailsController::class, "writeComment"]
 
 
 Route::get("/list/{user_id}", [ListingController::class, "show"]);
+
+Route::get("/profile/{name}", [ProfileController::class, "show"])->name('profile.show');;
