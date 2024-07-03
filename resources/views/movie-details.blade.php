@@ -72,6 +72,7 @@
             </div>
             <pre class="comment-text">{{html_entity_decode($comment->content)}}</pre>
             <!-- add a signature ? -->
+            {{var_dump($comment)}}
 
         </div>
     </div>
