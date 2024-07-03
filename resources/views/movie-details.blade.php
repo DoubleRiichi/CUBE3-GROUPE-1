@@ -60,7 +60,7 @@
     @foreach ($comments as $comment)
     <div class="comment">
         <div class="user-info">
-            <span class="username"> {{$comment->username}}</span>
+            <span class="username"> <a href="/profile/{{$comment->username}}">{{$comment->username}}</a></span>
             <span class=""> {{substr($comment->user_created_at, 0, 10)}}</span>
             <img src="" alt="avatar">
             <span>{{$comment->badge}}</span>
@@ -72,8 +72,6 @@
             </div>
             <pre class="comment-text">{{html_entity_decode($comment->content)}}</pre>
             <!-- add a signature ? -->
-            {{var_dump($comment)}}
-
         </div>
     </div>
     @endforeach
