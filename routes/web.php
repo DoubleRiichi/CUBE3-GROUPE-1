@@ -8,7 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\MovieDetailsController;
 use App\Http\Controllers\YouTubeController;
-
+use App\Http\Controllers\SearchController;
 
 
 
@@ -41,3 +41,6 @@ Route::post("/movie/{movie_id}", [MovieDetailsController::class, "writeComment"]
 Route::get("/list/{user_id}", [ListingController::class, "show"]);
 
 Route::get("/profile/{name}", [ProfileController::class, "show"])->name('profile.show');;
+
+Route::get("/search", [SearchController::class, "show"]);
+Route::post("/search", [SearchController::class, "search"]);
