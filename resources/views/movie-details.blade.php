@@ -4,12 +4,12 @@
 
 <link rel="stylesheet" href="{{ asset("css/movie-details.css")}}">
 <link rel="stylesheet" href="{{ asset("css/comments.css")}}">
+
 <div id="movie-details">
     <h2>{{ stripslashes($movie->title) }} <span> {{ stripslashes($movie->original_title) }}</span></h2>
-
     <div id="up">
         @if ($movie->poster_path)
-        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}" alt="{{ stripslashes($movie->title) }} poster">
+        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}" alt="{{stripslashes($movie->title) }} poster">
         @else
         <br> <!-- Show a stock picture instead -->
         @endif
