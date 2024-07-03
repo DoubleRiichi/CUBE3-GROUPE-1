@@ -88,3 +88,12 @@
   
   
   
+  .user-info a {
+  text-decoration: none;
+  color: black;
+  }
+
+  .user-info a:hover {
+    font-style: italic;
+    color: blue;
+  }
