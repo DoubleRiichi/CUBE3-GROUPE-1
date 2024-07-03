@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Movie;
+use Illuminate\Support\Facades\Auth;
 
 
 class SearchController extends Controller
@@ -47,7 +48,12 @@ class SearchController extends Controller
         if ($validation->fails()) {
             return redirect()->back()->withErrors($validation)->withInput();
         }
-
+        
+        if(Auth::check()) {
+            $current_user = Auth::user(); 
+        } else {
+            $current_user = null;
+        }
 
         $params = []; // to prevent SQL injections
         $keywords = [];
@@ -81,7 +87,7 @@ class SearchController extends Controller
         $results = Movie::MultipleWhere($keywords, $params);
         
         
-        return view("search", compact("results", "keywords", "params"));
+        return view("search", compact("results", "current_user"));
     }
 
 

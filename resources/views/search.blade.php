@@ -42,16 +42,24 @@
                 <th scope="col">Budget</th>
                 <th scope="col">Popularité</th>
                 <th scope="col">Note</th>
+                @if ($current_user)
+                    <th scope="col">Actions</th>
+                @endif
                 </tr>
             </thead>
             <tbody>
         @foreach ($results as $movie)
             <tr>
-                <th scope="row"><a class="movie-link" href="/movie/{{$movie->id}}">{{stripslashes($movie->title)}}</a></th>
+                <!-- TODO: dynamically fetch posters-->
+                <th scope="row"><a class="movie-link" href="/movie/{{$movie->id}}">{{stripslashes($movie->title)}}
+                    <span><img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}" height="150" alt="{{stripslashes($movie->title) }} poster"></span></a></th>
                 <td>{{$movie->release_date}}</td>
                 <td>{{$movie->budget}}</td>
                 <td>{{$movie->popularity}}</td>
                 <td>0</td>
+                @if ($current_user)
+                    <td><a href="">[ + ]</a></td>               
+                @endif
             </tr>   
         @endforeach
             </tbody>

@@ -102,3 +102,7 @@
           font-style: italic;
           color: blue;
     }
+
+    th a { position:relative; }
+    th a span { position:absolute; display:none; z-index:99; }
+    th a:hover span { display:block; }
