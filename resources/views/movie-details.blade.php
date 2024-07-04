@@ -4,12 +4,12 @@
 
 <link rel="stylesheet" href="{{ asset("css/movie-details.css")}}">
 <link rel="stylesheet" href="{{ asset("css/comments.css")}}">
+
 <div id="movie-details">
     <h2>{{ stripslashes($movie->title) }} <span> {{ stripslashes($movie->original_title) }}</span></h2>
-
     <div id="up">
         @if ($movie->poster_path)
-        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}" alt="{{ stripslashes($movie->title) }} poster">
+        <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}" alt="{{stripslashes($movie->title) }} poster">
         @else
         <br> <!-- Show a stock picture instead -->
         @endif
@@ -60,7 +60,7 @@
     @foreach ($comments as $comment)
     <div class="comment">
         <div class="user-info">
-            <span class="username"> {{$comment->username}}</span>
+            <span class="username"> <a href="/profile/{{$comment->username}}">{{$comment->username}}</a></span>
             <span class=""> {{substr($comment->user_created_at, 0, 10)}}</span>
             <img src="" alt="avatar">
             <span>{{$comment->badge}}</span>
@@ -72,7 +72,6 @@
             </div>
             <pre class="comment-text">{{html_entity_decode($comment->content)}}</pre>
             <!-- add a signature ? -->
-
         </div>
     </div>
     @endforeach

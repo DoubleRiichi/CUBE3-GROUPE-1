@@ -1,0 +1,108 @@
+#error-box {
+    color: rgb(187, 50, 50);
+    font-style: italic;
+    background-color: white;
+    border: 0.1em solid, rgb(187, 50, 50);
+    padding: 1em;
+  
+  }
+  
+
+  #search-area {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    border: 0.1em, solid, black;
+    padding: 2em;
+    width: 50%;
+    height: 80%;
+    margin: auto;
+    margin-top: 6em;
+    margin-bottom: 6em;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+  #search-form {
+    border: 0.2em solid black;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    flex-wrap: wrap;
+    background-color: white;
+
+  }
+
+  #search-form label, #search-form input {
+    margin: 0.5em;
+  }
+
+
+  #search-form #up,   #search-form #down, #search-form #middle{
+    display: flex;
+    flex-direction: row;
+  }
+
+
+
+  input[type=submit] {
+    width: 8em;
+  }
+
+    table {
+        border-collapse: collapse;
+        border: 2px solid rgb(140 140 140);
+        font-family: sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+      }
+      
+      caption {
+        caption-side: bottom;
+        padding: 10px;
+        font-weight: bold;
+      }
+      
+      thead,
+      tfoot {
+        background-color: rgb(237, 156, 151);
+      }
+      
+      th,
+      td {
+        border: 1px solid rgb(160 160 160);
+        padding: 8px 10px;
+      }
+      
+      td:last-of-type {
+        text-align: center;
+      }
+      
+      tbody > tr:nth-of-type(even) {
+        background-color: rgb(237 238 242);
+      }
+      
+      tfoot th {
+        text-align: right;
+      }
+      
+      tfoot td {
+        font-weight: bold;
+        background-color: whitesmoke;
+      }      
+
+    .movie-link {
+        text-decoration: none;
+        color: black;
+    }
+      
+    .movie-link:hover {
+          font-style: italic;
+          color: blue;
+    }
+
+    th a { position:relative; }
+    th a span { position:absolute; display:none; z-index:99; }
+    th a:hover span { display:block; }

@@ -50,6 +50,10 @@ class Movie extends Model
     public static function byStatus($status, $limit = null) {
         return self::where("original_language", "=", $status)->limit($limit)->get();
     }
+
+    public static function MultipleWhere($keywords, $params) {
+        return self::where(array_merge($keywords, $params))->get();
+    }
 }
 
 
