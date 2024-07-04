@@ -1,25 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+@extends('layouts.mainlayout')
 
-    <div id="movie-details">
-        <h2> Voici ta liste {{$user->username}} </h2>
-        @foreach ($list as $item)
-        <div>
-            <h3>{{ $item->title }}</h3>
-            @if($item->poster_path)
-            <img src="https://image.tmdb.org/t/p/w500{{ $item->poster_path }}" alt="{{ $item->title }} poster">
-            @else
-            <p>No poster available</p>
-            @endif
-            <p>{{$item->status}}</p>
-        </div>
-    </div>
-    @endforeach
-
-</body>
-</html>
+@section('content')
+<link rel="stylesheet" href="{{ asset('css/listing_movies.css') }}">
+<div id="content">
+    <h2> La liste de {{$user->username}} </h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Titre du film</th>
+                <th>Vus/À voir</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($list as $item)
+            <tr>
+                <td>
+                    <a href="{{ url('/movie/' . $item->movie_id) }}">{{ $item->title }}</a>
+                </td>
+                <td>
+                    <input type="checkbox" name="viewed" {{ $item->status == 'Vus' ? 'checked' : '' }} disabled>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection

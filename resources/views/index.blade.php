@@ -1,33 +1,8 @@
 @extends('layouts.mainlayout')
 
 @section('content')
-<style>
-        .movie-list {
-            display: flex;
-            flex-wrap: wrap; /* Empêche le passage à la ligne */
-             /* Défilement horizontal si nécessaire */
-            padding: 0;
-            margin: 1em;
-            background-color: rgba(255, 255, 255, .7);
-            border: 0.1em solid;
-            justify-content: center;
-        }
-        .movie-item {
-            flex: 0 0 auto; /* Permet aux éléments de se réduire si nécessaire */
-            margin-right: 10px; /* Marge entre les éléments */
-            text-align: center;
-        }
-        .movie-item:last-child {
-            margin-right: 0; /* Pas de marge à droite pour le dernier élément */
-        }
-        .movie-item img {
-            max-width: 70%;
-            height: auto;
-        }
-
-
-    </style>
-<div id="movie-container">
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<div id="content">
     <h1>Les films les plus populaires</h1>
     <div class="movie-list">
         @foreach ($mostPopularMovies as $movie)
