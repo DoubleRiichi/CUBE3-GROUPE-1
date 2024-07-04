@@ -15,11 +15,10 @@ body {
     background-image: url('{{ asset('Assets/background.webp') }}');
     margin: 0;
     padding: 0;
-    font-family: Georgia, serif;
+    font-family: Helvetica, serif;
     background-size: cover;
     background-attachment: fixed;
 
-    
 }
 
 

@@ -2,37 +2,35 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset("css/register.form.css")}}">
-<div id="register-form">
+<div id="content">
 
-@if ($errors->any())
+    @if ($errors->any())
     <div>
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+            <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
-@endif
+    @endif
 
-<form method="POST" action="{{ route('login') }}">
-    <h1>Login</h1>
-
-    @csrf
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
 
         <div>
-            <label for="email">Email</label><br>
-            <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+            <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="E-mail" required>
         </div>
         <div>
-            <label for="password">Password</label><br>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" placeholder="Mot de passe" required>
         </div>
-       
+
         <div>
-            <button type="submit">Login</button>
+            <button class="btn-register" type="submit">Se connecter</button>
         </div>
 
     </form>
-    <a href="{{ route('auth.google') }}" class="btn btn-primary">Login with Google</a>
+    <a href="{{ route('auth.google') }}" class="btn-google">
+        <img src="{{ asset('Assets/google-logo.png') }}" alt="Google logo">Google
+    </a>
 </div>
 @endsection
