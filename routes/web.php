@@ -40,7 +40,9 @@ Route::post("/movie/{movie_id}", [MovieDetailsController::class, "writeComment"]
 
 Route::get("/list/{user_id}", [ListingController::class, "show"]);
 
-Route::get("/profile/{name}", [ProfileController::class, "show"])->name('profile.show');;
+Route::get('/profile/{name}', [ProfileController::class, "show"])->name('profile.show');
+Route::get('/profile/{name}/edit', [ProfileController::class, "edit"])->name('profile.edit');
+Route::post('/profile/{name}', [ProfileController::class, "update"])->name('profile.update');
 
 Route::get("/search", [SearchController::class, "show"]);
 Route::post("/search", [SearchController::class, "search"]);
