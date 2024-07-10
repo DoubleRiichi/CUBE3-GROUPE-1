@@ -56,7 +56,6 @@ class Comment extends Model
                           ->where("movie_id", "=", $movieId)
                           ->join("users", "users.id", "=", "comments.user_id")->orderByDesc("created_at")->get();
     }
-
 }
 
 
