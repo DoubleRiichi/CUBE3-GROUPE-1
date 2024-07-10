@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,9 @@ class ProfileController extends Controller
   public function show($name)
   {
       $user = User::where('name', $name)->firstOrFail();
-      return view('profile', compact('user'));
+      $comments = Comment::ByUserId($user->id);
+
+      return view('profile', compact('user', "comments"));
   }
 
   public function edit($name)
