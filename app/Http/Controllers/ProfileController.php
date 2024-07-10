@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Redirect;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 use Exception;
 
@@ -32,7 +32,6 @@ class ProfileController extends Controller
       $request->validate([
           'name' => 'required|string|max:255',
           'email' => 'required|string|email|max:255',
-          'permissions' => 'required|string|max:255',
           'badge' => 'required|string|max:255',
           'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
       ]);
@@ -41,13 +40,12 @@ class ProfileController extends Controller
 
       $user->name = $request->input('name');
       $user->email = $request->input('email');
-      $user->permissions = $request->input('permissions');
       $user->badge = $request->input('badge');
 
       if ($request->hasFile('avatar')) {
           // Supprime l'ancien avatar s'il existe
           if ($user->avatar) {
-              Storage::delete('public/' . $user->avatar);
+            Storage::disk("public")->delete($user->avatar);
           }
           // Stocke le nouvel avatar
           $path = $request->file('avatar')->store('avatars', 'public');
