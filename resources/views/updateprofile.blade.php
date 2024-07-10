@@ -19,10 +19,10 @@
             <label for="email">Email :</label>
             <input type="email" id="email" name="email" class="form-control" value="{{ Auth::user()->email }}" required>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="right">Droits :</label>
             <input type="text" id="right" name="permissions" class="form-control" value="{{ Auth::user()->right }}" required>
-        </div>
+        </div> -->
         <div class="form-group">
             <label for="badge">Badge :</label>
             <input type="text" id="badge" name="badge" class="form-control" value="{{ Auth::user()->badge }}" required>
