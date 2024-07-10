@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             <label for="right">Droits :</label>
-            <input type="text" id="right" name="right" class="form-control" value="{{ Auth::user()->right }}" required>
+            <input type="text" id="right" name="permissions" class="form-control" value="{{ Auth::user()->right }}" required>
         </div>
         <div class="form-group">
             <label for="badge">Badge :</label>
