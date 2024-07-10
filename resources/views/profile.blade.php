@@ -8,6 +8,10 @@
     <p>right : {{ $user->right }}</p>
     <p>avatar : <img src="{{ $user->avatar }}" alt="Avatar" width="100"></p>
     <p>badge : {{ $user->badge }}</p>
-    <a href="{{route('profile.edit', ['name' => $user->name]) }}">Modifier les informations du Profil</a>
+
+    @if (Auth::check() && Auth::user()->name == $user->name)
+        <a href="{{route('profile.edit', ['name' => $user->name]) }}">Modifier les informations du Profil</a>
+    @endif
+    
 </div>  
 @endsection
