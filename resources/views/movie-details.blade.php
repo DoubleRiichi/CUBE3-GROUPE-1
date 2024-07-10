@@ -62,7 +62,7 @@
         <div class="user-info">
             <span class="username"> <a href="/profile/{{$comment->username}}">{{$comment->username}}</a></span>
             <span class=""> {{substr($comment->user_created_at, 0, 10)}}</span>
-            <img src="" alt="avatar">
+            <img src="{{asset("storage/$comment->avatar")}}" alt="avatar">
             <span>{{$comment->badge}}</span>
         </div>
         <div class="user-comment">
