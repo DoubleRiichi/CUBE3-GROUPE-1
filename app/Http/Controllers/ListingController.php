@@ -27,8 +27,8 @@ class ListingController extends Controller
           if(!is_numeric($request->rating ))
             return redirect()->back()->withErrors("Une note doit être une valeur numérique.");
 
-          if($request->rating > 10 && $request->rating < 0)
-            return redirect()->back()->withErrors("La note ne peut être supérieure à 10.");
+          if($request->rating > 10 || $request->rating < 0)
+            return redirect()->back()->withErrors("La note ne peut être supérieure à 10 ou inférieure à 0.");
 
           
           Listing_Movie::InseretMovie(
