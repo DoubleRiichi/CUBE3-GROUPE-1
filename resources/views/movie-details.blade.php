@@ -4,7 +4,13 @@
 
 <link rel="stylesheet" href="{{ asset("css/movie-details.css")}}">
 <link rel="stylesheet" href="{{ asset("css/comments.css")}}">
-
+@if ($errors->any())
+    <div id="error-box">
+        @foreach ($errors->all() as $error)
+        <p>{{ $error }}</p>
+        @endforeach
+    </div>
+    @endif
 <div id="movie-details">
     <h2>{{ stripslashes($movie->title) }} <span> {{ stripslashes($movie->original_title) }}</span></h2>
     <div id="up">
@@ -64,13 +70,7 @@
     <!--TODO: add a way to get the current login user ID, and check if they're connected -->
     @if($current_user)
     <button id="show-comment-form">Commenter</button>
-    @if ($errors->any())
-    <div id="error-box">
-        @foreach ($errors->all() as $error)
-        <p>{{ $error }}</p>
-        @endforeach
-    </div>
-    @endif
+
     <form id="comment-form" method="POST" action="/movie/{{$movie->id}}" hidden>
         @csrf
         <textarea name="content" id="content" cols="100" rows="10"></textarea>
