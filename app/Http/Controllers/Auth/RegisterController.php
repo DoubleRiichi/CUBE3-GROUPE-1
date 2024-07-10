@@ -68,7 +68,7 @@ class RegisterController extends Controller
                     'email' => $googleUser->getEmail(),
                     'password' => Hash::make('default-google-password'), // ou un autre mot de passe sécurisé
                     'username' => $googleUser->getNickname() ?: $googleUser->getName(),
-                    'permissions' => null,
+                    'permissions' => 'user',
                     'avatar' => $googleUser->getAvatar(),
                     'badge' => null,
                 ]);
