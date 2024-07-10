@@ -30,16 +30,15 @@ class MovieDetailsController extends Controller
 
 
     public function writeComment($movie_id, Request $request) {
-      $comment = new Comment;
-      $comment->user_id = Auth::id(); #get logged in user id
-      $comment->movie_id = $movie_id;
-      $comment->content = filter_var($request->content, FILTER_SANITIZE_SPECIAL_CHARS);
+
+      $user_id = Auth::id(); #get logged in user id
+      $content = filter_var($request->content, FILTER_SANITIZE_SPECIAL_CHARS);
       
       if(empty($request->content)) {
         return redirect()->back()->withErrors("Un commentaire ne peut pas être vide!");
       }
       
-      $comment->save();
+      Comment::InsertComment($user_id, $movie_id, $content);
 
       return redirect("/movie/$movie_id");
     }

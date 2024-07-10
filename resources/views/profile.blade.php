@@ -31,7 +31,7 @@
                 <p class="comment-text">{{html_entity_decode($comment->content)}}</p>
                 <!-- add a signature ? -->
                 
-        </div>
+            </div>
         @endforeach
         </div>
     @endif

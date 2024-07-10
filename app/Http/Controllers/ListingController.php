@@ -6,6 +6,7 @@ use App\Models\Movie;
 use App\Models\User;
 use App\Models\Listing_Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ListingController extends Controller
 {
@@ -20,4 +21,20 @@ class ListingController extends Controller
         return view("listing", compact("user", "list"));
       }
   
+      public function add(Request $request) {
+        
+        if(Auth::user()->id == $request->user_id) {
+            Listing_Movie::InseretMovie(
+              $request->user_id,
+              $request->movie_id,
+              $request->status,
+              $request->rating
+            );
+            
+            return redirect("/list/$request->user_id");
+
+        }
+
+        abort("503");
+    }
 }

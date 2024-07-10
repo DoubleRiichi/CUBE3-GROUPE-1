@@ -1,7 +1,7 @@
 @extends('layouts.mainlayout')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/listing_movies.css') }}">
+<link rel="stylesheet" href="{{ asset('css/listing-movies.css') }}">
 <div id="content">
     <h2> La liste de {{$user->username}} </h2>
     <table>
@@ -9,6 +9,7 @@
             <tr>
                 <th>Titre du film</th>
                 <th>Vus/À voir</th>
+                <th>Note</th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,9 @@
                 </td>
                 <td>
                     <input type="checkbox" name="viewed" {{ $item->status == 'Vus' ? 'checked' : '' }} disabled>
+                </td>
+                <td>
+                    <span class="listing-note">{{$item->rating}}</span><span class="base"> /10</span>
                 </td>
             </tr>
             @endforeach

@@ -29,6 +29,29 @@
                 <p>Durée : {{$movie->runtime}} minutes</p>
                 <p>Budget : {{$movie->budget}}$</p>
                 <p>Popularité : {{$movie->popularity}}</p>
+
+                @if (Auth::check())
+                <div id="add-list-area">
+                    <button id="add-list-btn">Ajouter</button>
+                    <form hidden id="add-list-form" method="POST" action="/list/{{Auth::id()}}">
+                    @csrf
+
+                        <label for="status">Status : </label>
+                        <select name="status" id="field-status">
+                            <!-- ne pas changer -->
+                            <option value="Vus">Vu</option>
+                            <option value="À voir">À voir</option>
+                        </select>
+                        <label for="rating">Note : </label>
+                        <input id="add-list-note" type="text" name="rating" id="field-rating" maxlength="4">
+                        <input type="text" name="movie_id" hidden value="{{$movie->id}}">
+                        <input type="text" name="user_id" hidden value="{{$current_user->id}}">
+
+                        <input id="inline-submit-btn" type="submit" value="Ajouter">
+                    </form>
+                </div>
+                @endif
+            
             </div>
         </div>
     </div>

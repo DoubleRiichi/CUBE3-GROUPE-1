@@ -65,3 +65,36 @@
 #bottom p {
   padding: 0.2
 }
+
+
+
+button, input[type=submit] {
+  background-color: brown;
+  width: 150px; 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.5em;
+  text-decoration: none;
+  font-size: 1em;
+  transition: background-color 0.3s;
+
+}
+
+#add-list-area {
+  display: flex;
+  flex-direction: column;
+  margin: 0.2em;
+}
+
+
+#inline-submit-btn {
+  width: 5em;
+}
+
+#add-list-note {
+  width: 3em;
+}
