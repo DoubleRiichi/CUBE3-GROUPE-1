@@ -13,7 +13,7 @@ class ListingController extends Controller
     public function show($user_id) {
         //add error handling
         $user = User::ById($user_id);
-        if($user_id == null) {
+        if($user_id == null or $user == null) {
           abort(404);
         } 
         $list = Listing_Movie::JoinListingAndMovie($user->id);
@@ -24,12 +24,19 @@ class ListingController extends Controller
       public function add(Request $request) {
         
         if(Auth::user()->id == $request->user_id) {
-            Listing_Movie::InseretMovie(
+          if(!is_numeric($request->rating ))
+            return redirect()->back()->withErrors("Une note doit être une valeur numérique.");
+
+          if($request->rating > 10 && $request->rating < 0)
+            return redirect()->back()->withErrors("La note ne peut être supérieure à 10.");
+
+          
+          Listing_Movie::InseretMovie(
               $request->user_id,
               $request->movie_id,
               $request->status,
               $request->rating
-            );
+          );
             
             return redirect("/list/$request->user_id");
 
