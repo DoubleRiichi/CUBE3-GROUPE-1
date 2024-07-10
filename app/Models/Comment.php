@@ -56,6 +56,15 @@ class Comment extends Model
                           ->where("movie_id", "=", $movieId)
                           ->join("users", "users.id", "=", "comments.user_id")->orderByDesc("created_at")->get();
     }
+
+    public static function InsertComment($user_id, $movie_id, $content) {
+      $comment = new Comment;
+      $comment->user_id = $user_id;
+      $comment->movie_id = $movie_id;
+      $comment->content = $content; 
+
+      $comment->save();
+    }
 }
 
 

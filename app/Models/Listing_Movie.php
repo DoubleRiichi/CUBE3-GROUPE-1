@@ -33,4 +33,14 @@ class Listing_Movie extends Model
                             ->where("user_id", "=", $userId)
                             ->join("movies", "movies.id", "=", "listing_movies.movie_id")->get();
     }
+
+    public static function InseretMovie($user_id, $movie_id, $status, $rating) {
+        $list = new Listing_Movie();
+        $list->user_id = $user_id;
+        $list->movie_id = $movie_id;
+        $list->status = $status;
+        $list->rating = $rating;
+
+        $list->save();
+    }
 }
