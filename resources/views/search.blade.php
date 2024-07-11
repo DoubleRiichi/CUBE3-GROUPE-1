@@ -4,20 +4,20 @@
 
 <link rel="stylesheet" href="{{asset("css/search.css")}}">
 
-<div id="search-area">
-    <form id="search-form" method="POST" action="/search/">
+<div class="mainbox" id="search-area">
+    <form class="inline-form" id="search-form" method="POST" action="/search/">
         @csrf
-        <div id="up">
+        <div class="row">
             <label for="title">Titre : </label>
             <input type="text" name="title" id="" size="50"> 
         </div>
-        <div id="middle">    
+        <div class="row">
             <label for="beforeDate">Avant : </label>
             <input type="date" name="beforeDate" id=""> 
             <label for="afterDate">Après : </label>
             <input type="date" name="afterDate" id="">
         </div>
-        <div id="down">
+        <div class="row">
             <label for="minimumRating">Note : </label>
             <input type="text" name="minimumRating" id="" size="1">
             <label for="minimumPopularity">Popularité : </label>
@@ -26,7 +26,7 @@
             <input type="text" name="minimumBudget" id="" size="1">
         </div>
         <br>
-        <input type="submit" value="Chercher">
+        <button class="redbtn" type="submit">Chercher</button>
     </form>
 
     @if(isset($results))

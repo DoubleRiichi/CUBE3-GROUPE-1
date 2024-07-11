@@ -1,100 +1,51 @@
-
-
-#movie-details {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: whitesmoke;
-  border: 0.1em, solid, black;
-  padding: 2em;
-  width: 80%;
-  height: 80%;
-  margin: auto;
-  margin-top: 6em;
-  margin-bottom: 6em;
+#movie {
+    display: flex;
+    flex-wrap: wrap;
+    height: 80%;
 }
 
-#movie-details img {
-  display: flex;
-  justify-self: left;
-  height: auto;
+#movie img {
+    display: flex;
+    justify-self: left;
+    height: auto;
 }
 
-#up {
-  justify-content: left;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
+#movie h2 span {
+    font-size: medium;
+    color: rgba(100, 96, 96, 0.952);
+    font-style: italic;
 }
 
-/* #up h2, p {
-  display: flex;
-} */
-#up p, #up pre{
-  padding: 1em;
-  background-color: rgb(255, 255, 255);
-  border: 0.2em solid black;
-  margin: 1em;
-  text-wrap: wrap;
-
+.movie-details {
+    justify-content: left;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
 }
 
-#recap {
-  flex-direction: column;
+.movie-details p {
+    margin: 1em;
+    text-wrap: wrap;
 }
 
-#movie-details h2 span {
-  font-size: medium;
-  color: rgba(100, 96, 96, 0.952);
-  font-style: italic;
-
-}
-
-#bottom p{
-    
-  background: none;
-  border: none;
-}
-
-#bottom {
-
-  background-color: rgb(255, 255, 255);
-  border: 0.2em solid black;
-  margin: 1em;
-}
-
-#bottom p {
-  padding: 0.2
-}
-
-
-
-button, input[type=submit] {
-  background-color: brown;
-  width: 150px; 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  padding: 0.5em 1em;
-  border: none;
-  border-radius: 0.5em;
-  text-decoration: none;
-  font-size: 1em;
-  transition: background-color 0.3s;
-
+.movie-box {
+    border: 0.2em solid black;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 0.5em;
+    flex-direction: column;
 }
 
 #add-list-area {
-  display: flex;
-  flex-direction: column;
-  margin: 0.2em;
+    display: flex;
+    flex-direction: column;
+    margin: 0.2em;
 }
 
-
 #inline-submit-btn {
-  width: 5em;
+    width: 5em;
 }
 
 #add-list-note {
-  width: 3em;
+    width: 3em;
 }

@@ -7,7 +7,7 @@
             {{ session('success') }}
         </div>
     @endif
-<div id="content">
+<div class="mainbox" id="profil">
     <h1>Profil de {{ Auth::user()->name }}</h1>
     <form action="{{ route('profile.update', ['name' => $user->name]) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -34,7 +34,7 @@
                 <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="mt-2" width="100">
             @endif
         </div>
-        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        <button type="submit" class="redbtn">Mettre à jour</button>
     </form>
     </div>
 @endsection

@@ -5,15 +5,15 @@
 <link rel="stylesheet" href="{{ asset("css/movie-details.css")}}">
 <link rel="stylesheet" href="{{ asset("css/comments.css")}}">
 @if ($errors->any())
-    <div id="error-box">
-        @foreach ($errors->all() as $error)
-        <p>{{ $error }}</p>
-        @endforeach
-    </div>
-    @endif
-<div id="movie-details">
+<div id="error-box">
+    @foreach ($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+</div>
+@endif
+<div class="mainbox" id="movie">
     <h2>{{ stripslashes($movie->title) }} <span> {{ stripslashes($movie->original_title) }}</span></h2>
-    <div id="up">
+    <div class="movie-details">
         @if ($movie->poster_path)
         <img class="movie-poster" src="https://image.tmdb.org/t/p/w500{{ $movie->poster_path }}" alt="{{stripslashes($movie->title) }} poster">
         @else
@@ -21,13 +21,13 @@
         @endif
         <div id="recaps">
             @if ($movie->tagline)
-            <p>{{stripslashes($movie->tagline)}}</p>
+            <p class="movie-box">{{stripslashes($movie->tagline)}}</p>
             @endif
             @if ($movie->overview)
-            <p>{{stripslashes($movie->overview)}}</p>
+            <p class="movie-box">{{stripslashes($movie->overview)}}</p>
             @endif
 
-            <div id="bottom">
+            <div class="movie-box" id="other-details">
                 <p>Langue Originale : {{$movie->original_language}}</p>
                 <p>Date de Sortie : {{$movie->release_date}}</p>
                 <p>Status : {{$movie->status}}</p>
@@ -38,9 +38,9 @@
 
                 @if (Auth::check())
                 <div id="add-list-area">
-                    <button id="add-list-btn">Ajouter</button>
+                    <button class="redbtn" id="add-list-btn">Ajouter</button>
                     <form hidden id="add-list-form" method="POST" action="/list/{{Auth::id()}}">
-                    @csrf
+                        @csrf
 
                         <label for="status">Status : </label>
                         <select name="status" id="field-status">
@@ -53,47 +53,45 @@
                         <input type="text" name="movie_id" hidden value="{{$movie->id}}">
                         <input type="text" name="user_id" hidden value="{{$current_user->id}}">
 
-                        <input id="inline-submit-btn" type="submit" value="Ajouter">
+                        <button class="redbtn" id="inline-submit-btn" type="submit">Ajouter</button>
                     </form>
                 </div>
                 @endif
-            
+
             </div>
         </div>
     </div>
 </div>
-</div>
 
-
-<div id="comments-list">
+<div class="mainbox">
     <h2>Commentaires</h2>
     <!--TODO: add a way to get the current login user ID, and check if they're connected -->
     @if($current_user)
-    <button id="show-comment-form">Commenter</button>
+    <button class="redbtn" id="show-comment-form">Commenter</button>
 
     <form id="comment-form" method="POST" action="/movie/{{$movie->id}}" hidden>
         @csrf
         <textarea name="content" id="content" cols="100" rows="10"></textarea>
         <br>
-        <input type="submit" value="Poster">
+        <button class="redbtn" type="submit">Poster</button>
     </form>
     @endif
 
     @if (!empty($comments))
     @foreach ($comments as $comment)
-    <div class="comment">
-        <div class="user-info">
-            <span class="username"> <a href="/profile/{{$comment->username}}">{{$comment->username}}</a></span>
-            <span class=""> {{substr($comment->user_created_at, 0, 10)}}</span>
+    <div class="commentbox">
+        <div class="box" id="user">
+            <span> <a href="/profile/{{$comment->username}}">{{$comment->username}}</a></span>
+            <span> {{substr($comment->user_created_at, 0, 10)}}</span>
             <img src="{{asset("storage/$comment->avatar")}}" alt="avatar">
             <span>{{$comment->badge}}</span>
         </div>
-        <div class="user-comment">
+        <div class="box" id="comment">
             <div class="comment-date">
-                <span>Posted: {{$comment->created_at}}</span>
                 <span>Edited: {{$comment->updated_at}}</span>
+                <span>Posted: {{$comment->created_at}}</span>
             </div>
-            <pre class="comment-text">{{html_entity_decode($comment->content)}}</pre>
+            <p class="comment-text">{{html_entity_decode($comment->content)}}</p>
             <!-- add a signature ? -->
         </div>
     </div>
