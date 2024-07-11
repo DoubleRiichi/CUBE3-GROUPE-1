@@ -1,8 +1,8 @@
 @extends('layouts.mainlayout')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset("css/register.form.css")}}">
-<div id="content">
+<link rel="stylesheet" href="{{ asset("css/register.css")}}">
+<div class="mainbox" id="register">
 
     @if ($errors->any())
     <div>
@@ -14,7 +14,7 @@
     </div>
     @endif
 
-    <form method="POST" action="{{ route('login') }}">
+    <form class="inline-form" id="register" method="POST" action="{{ route('login') }}">
         @csrf
 
         <div>
@@ -25,11 +25,11 @@
         </div>
 
         <div>
-            <button class="btn-register" type="submit">Se connecter</button>
+            <button class="redbtn" type="submit">Se connecter</button>
         </div>
 
     </form>
-    <a href="{{ route('auth.google') }}" class="btn-google">
+    <a href="{{ route('auth.google') }}" class="btn google">
         <img src="{{ asset('Assets/google-logo.png') }}" alt="Google logo">Google
     </a>
 </div>

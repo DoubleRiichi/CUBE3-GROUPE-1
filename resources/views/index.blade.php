@@ -1,8 +1,8 @@
 @extends('layouts.mainlayout')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-<div id="content">
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+<div class="mainbox">
     <h1>Les films les plus populaires</h1>
     <div class="movie-list">
         @foreach ($mostPopularMovies as $movie)

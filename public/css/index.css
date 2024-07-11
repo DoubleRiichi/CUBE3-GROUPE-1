@@ -1,13 +1,3 @@
-div#content {
-    background-color: whitesmoke;
-    border: 0.1em solid black;
-    padding-left: 2em;
-    width: 75%;
-    margin: auto;
-    margin-top: 6em;
-    margin-bottom: 6em;
-}
-
 .movie-list {
     display: flex;
     flex-wrap: wrap; /* Empêche le passage à la ligne */

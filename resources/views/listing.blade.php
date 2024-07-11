@@ -2,7 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/listing-movies.css') }}">
-<div id="content">
+<div class="mainbox" id="listing-movies">
     <h2> La liste de {{$user->username}} </h2>
     <table>
         <thead>
