@@ -21,7 +21,7 @@ class RecommendationController extends Controller
             'Content-Type' => 'application/json',
         ];
 
-        // Données JSON à envoyer à l'API Hugging Face
+
         $requestData = [
             'inputs' => [
                 'prompt' => "Voici quelques films dans le genre '$genre':...",
@@ -32,17 +32,17 @@ class RecommendationController extends Controller
         ];
 
         try {
-            // Effectuer la requête POST à l'API Hugging Face
+         
             $client = new Client();
             $response = $client->post($apiUrl, [
                 'headers' => $headers,
                 'json' => $requestData,
             ]);
 
-            // Décoder la réponse JSON
+           
             $recommendations = json_decode($response->getBody()->getContents(), true);
 
-            // Valider les recommandations
+           
             if (!isset($recommendations['outputs']) || !isset($recommendations['outputs']['text'])) {
                 throw new \Exception('Aucune recommandation trouvée.');
             }
