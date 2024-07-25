@@ -11,7 +11,6 @@ class Comment extends Model
 
     protected $table = "comments";
     protected $primaryKey = "id";
-    public $timestamps = false;
 
 
     public static function ById($id) {
@@ -53,11 +52,19 @@ class Comment extends Model
 
     public static function JoinCommentAndUser($movieId) {
 
-      return self::select("*", "users.created_at as user_created_at", "users.updated_at as user_updated_at")
+      return self::select("comments.*", "users.created_at as user_created_at", "users.updated_at as user_updated_at", "users.name as username", "users.avatar as avatar")
                           ->where("movie_id", "=", $movieId)
-                          ->join("users", "users.id", "=", "comments.user_id")->get();
+                          ->join("users", "users.id", "=", "comments.user_id")->orderByDesc("created_at")->get();
     }
 
+    public static function InsertComment($user_id, $movie_id, $content) {
+      $comment = new Comment;
+      $comment->user_id = $user_id;
+      $comment->movie_id = $movie_id;
+      $comment->content = $content; 
+
+      $comment->save();
+    }
 }
 
 

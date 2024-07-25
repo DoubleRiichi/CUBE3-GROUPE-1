@@ -12,8 +12,8 @@ class ListingTableSeeder extends Seeder
         DB::table('listing')->insert([
             'status' => 'Watched',
             'note' => 5,
-            'movie_id' => 1, // Assurez-vous que le film avec l'ID 1 existe
-            'user_id' => 1, // Assurez-vous que l'utilisateur avec l'ID 1 existe
+            'movie_id' => 1, 
+            'user_id' => 1, 
         ]);
     }
 }

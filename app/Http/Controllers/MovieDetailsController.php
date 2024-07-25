@@ -6,6 +6,7 @@ use App\Models\Movie;
 use App\Models\User;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class MovieDetailsController extends Controller
@@ -18,7 +19,30 @@ class MovieDetailsController extends Controller
       } 
       $comments = Comment::JoinCommentAndUser($movie->id);
       
-      return view("movie-details", compact("movie", "comments"));
+      if(Auth::check()) {
+        $current_user = Auth::user(); 
+      } else {
+        $current_user = null;
+      }
+
+      return view("movie-details", compact("movie", "comments", "current_user"));
+    }
+
+
+    public function writeComment($movie_id, Request $request) {
+
+      $user_id = Auth::id(); #get logged in user id
+      $content = filter_var($request->content, FILTER_SANITIZE_SPECIAL_CHARS);
+      
+      if(strlen($content) > 2000)
+        return redirect()->back()->withErrors("Un commentaire ne peut pas dépasser 2000 charactères !");
+      if(empty($request->content)) {
+        return redirect()->back()->withErrors("Un commentaire ne peut pas être vide!");
+      }
+      
+      Comment::InsertComment($user_id, $movie_id, $content);
+
+      return redirect("/movie/$movie_id");
     }
 
 }

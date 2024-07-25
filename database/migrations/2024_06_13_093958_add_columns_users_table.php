@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string("username");
-            $table->string("permissions");
+            $table->string("username")->unique();
+            $table->enum("permissions", ["user", "admin"])->default("user");
             $table->string('avatar')->nullable();
             $table->string('badge')->nullable();
         });

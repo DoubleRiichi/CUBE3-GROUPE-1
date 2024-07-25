@@ -24,10 +24,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-            'username' => 'required|string|max:255|unique:users',
-            'permissions' => 'nullable|string',
-            'avatar' => 'nullable|string',
-            'badge' => 'nullable|string',
+            'username' => 'required|string|max:255|unique:users'
         ]);
 
         if ($validator->fails()) {
@@ -39,9 +36,9 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'username' => $request->username,
-            'permissions' => $request->permissions,
-            'avatar' => $request->avatar,
-            'badge' => $request->badge,
+            'permissions' => "user",
+            'avatar' => "avatar",
+            'badge' => "user",
         ]);
 
 
@@ -71,7 +68,7 @@ class RegisterController extends Controller
                     'email' => $googleUser->getEmail(),
                     'password' => Hash::make('default-google-password'), // ou un autre mot de passe sécurisé
                     'username' => $googleUser->getNickname() ?: $googleUser->getName(),
-                    'permissions' => null,
+                    'permissions' => 'user',
                     'avatar' => $googleUser->getAvatar(),
                     'badge' => null,
                 ]);

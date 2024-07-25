@@ -1,10 +1,14 @@
 <?php
+
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ListingController;
 use App\Http\Controllers\MovieDetailsController;
 use App\Http\Controllers\YouTubeController;
-
+use App\Http\Controllers\SearchController;
 
 
 
@@ -26,8 +30,25 @@ Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name
 Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name('register');
 Route::post('/register',[RegisterController::class,'register'])->name('register');
 
+Route::get('/login', [LoginController::class, "show"])->name("login");
+Route::post('/login', [LoginController::class, "login"])->name("login");
+
+Route::get("/logout", [LoginController::class, "logout"])->name("logout");
+
 Route::get('auth/google', [RegisterController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [RegisterController::class, 'handleGoogleCallback']);
 
 
 Route::get("/movie/{movie_id}", [MovieDetailsController::class, "show"]);
+Route::post("/movie/{movie_id}", [MovieDetailsController::class, "writeComment"]);
+
+
+Route::get("/list/{user_id}", [ListingController::class, "show"]);
+Route::post("/list/{user_id}", [ListingController::class, "add"]);
+
+Route::get('/profile/{name}', [ProfileController::class, "show"])->name('profile.show');
+Route::get('/profile/{name}/edit', [ProfileController::class, "edit"])->name('profile.edit');
+Route::post('/profile/{name}', [ProfileController::class, "update"])->name('profile.update');
+
+Route::get("/search", [SearchController::class, "show"]);
+Route::post("/search", [SearchController::class, "search"]);

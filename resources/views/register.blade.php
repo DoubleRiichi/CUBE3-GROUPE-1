@@ -1,23 +1,22 @@
 @extends('layouts.mainlayout')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset("css/register.form.css")}}">
-<div id="register-form">
-
-@if ($errors->any())
+<link rel="stylesheet" href="{{ asset("css/register.css")}}">
+<div class="mainbox" id="register">
+    @if ($errors->any())
     <div>
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+            <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
-@endif
+    @endif
 
-<form method="POST" action="{{ route('register') }}">
-    <h1>Register</h1>
+    <form class="inline-form" method="POST" action="{{ route('register') }}">
+        <h1>Créer un compte</h1>
 
-    @csrf
+        @csrf
         <div>
             <label for="name">Name</label> <br>
             <input type="text" id="name" name="name" value="{{ old('name') }}" required>
@@ -39,22 +38,12 @@
             <input type="text" id="username" name="username" value="{{ old('username') }}" required>
         </div>
         <div>
-            <label for="permissions">Permissions</label><br>
-            <input type="text" id="permissions" name="permissions" value="{{ old('permissions') }}">
-        </div>
-        <div>
-            <label for="avatar">Avatar URL</label><br>
-            <input type="text" id="avatar" name="avatar" value="{{ old('avatar') }}">
-        </div>
-        <div>
-            <label for="badge">Badge</label><br>
-            <input type="text" id="badge" name="badge" value="{{ old('badge') }}">
-        </div>
-        <div>
-            <button type="submit">Register</button>
+            <button class="redbtn" type="submit">S'inscrire</button>
         </div>
 
     </form>
-    <a href="{{ route('auth.google') }}" class="btn btn-primary">Register with Google</a>
+    <a href="{{ route('auth.google') }}" class="btn google">
+        <img src="{{ asset('Assets/google-logo.png') }}" alt="Google logo">Google
+    </a>
 </div>
 @endsection
