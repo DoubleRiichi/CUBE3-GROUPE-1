@@ -17,11 +17,16 @@ Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/trailers', [YouTubeController::class, 'fetchTrailers']);
 
-//retourne la vue trailer en cliquant sur Recherche
-Route::get('/search', function () {
-    return redirect('/trailers');
-});
+use App\Http\Controllers\RecommendationController;
 
+
+Route::get('/recommendation-form', [RecommendationController::class, 'showForm'])->name('showForm');
+Route::post('/recommend', [RecommendationController::class, 'recommend'])->name('recommend');
+
+
+Route::get('/Subscription',[RegisterController::class,'showRegistrationForm'])->name('register');
+
+Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name('register');
 Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name('register');
 Route::post('/register',[RegisterController::class,'register'])->name('register');
 
