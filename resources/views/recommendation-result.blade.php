@@ -7,28 +7,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-image: url('{{ asset('Assets/background-origin.webp') }}');
             margin: 0;
+            padding: 0;
+            font-family: Helvetica, serif;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; 
         }
+
         .container {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            max-width: 600px;
-            text-align: center;
+            max-width: 500px; 
+            width: 100%; 
+            text-align: center; 
         }
+
         h1 {
             margin-top: 0;
         }
-        p {
-            text-align: left;
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
