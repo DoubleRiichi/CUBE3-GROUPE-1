@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src ="{{ asset('js/burger.js') }}"></script>
     <title><?php 
         use Illuminate\Support\Facades\Route;
         echo Route::currentRouteName() ?></title>
@@ -99,6 +100,21 @@
         <a class="links" href="/home">Accueil</a>
         <a class="links" href="/search">Recherche</a>
         <?php use Illuminate\Support\Facades\Auth;
+        $user = Auth::check();
+        ?>
+        @if($user)     
+            <a class="links" href="/list/{{Auth::id()}}">Ma liste</a>
+            <a class="links" href="{{ route('profile.show', ['name' => Auth::user()->name]) }}">Profil</a>
+            <a class="links" href="/logout">Deconnexion</a>
+        @else
+            <a class="links" href="/login">Connexion</a>
+            <a class="links" href="/register">Inscription</a>
+        @endif
+    </div>
+    <div class="burgersection">
+        <a class="links" href="/home">Accueil</a>
+        <a class="links" href="/search">Recherche</a>
+       <?php
         $user = Auth::check();
         ?>
         @if($user)     
