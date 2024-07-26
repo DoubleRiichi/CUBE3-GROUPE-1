@@ -11,6 +11,7 @@ Route::get('/users/index', [UserController::class, "index"]);
 Route::get('/users/{id}', [UserController::class, "show"]);
 
 Route::get("/movie/{id}", [MovieDetailsController::class, "show"]);
+Route::get("/movies", [MovieDetailsController::class, "index"]);
 Route::get("/list/{id}", [ListingController::class, "show"]);
 
 #Route::get('/profile/{name}', [ProfileController::class, "show"])->name('profile.show');

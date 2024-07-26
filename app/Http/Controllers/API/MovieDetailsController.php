@@ -15,7 +15,13 @@ class MovieDetailsController extends Controller
      */
     public function index()
     {
-        //
+        $movies = Movie::all("*");
+
+        if($movies == null) {
+          abort(404);
+        }
+
+        return response()->json($movies);
     }
 
     /**
