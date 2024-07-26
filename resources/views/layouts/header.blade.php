@@ -95,8 +95,7 @@
     <img src="{{ asset('Assets/logo-rectangle2.webp') }}" alt="logo">        
      
     <a href="/home"><div>Accueil</div></a>
-    
-    
+
     <a href="/search"><div>Recherche</div></a>
     
     <?php use Illuminate\Support\Facades\Auth;
