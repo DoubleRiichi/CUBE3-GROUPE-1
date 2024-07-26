@@ -13,8 +13,7 @@ class HomeController extends Controller
     {
         $limit = 5; // ou tout autre nombre que vous souhaitez
         $mostPopularMovies = Movie::MostPopular($limit);
-        
+
         return view('index', compact('mostPopularMovies'));
     }
-
 }
