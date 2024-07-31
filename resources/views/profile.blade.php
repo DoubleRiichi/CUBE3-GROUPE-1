@@ -14,6 +14,20 @@
     @if (Auth::check() && Auth::user()->name == $user->name)
     <a href="{{route('profile.edit', ['name' => $user->name]) }}">Modifier les informations du Profil</a>
     @endif
+
+
+    @if (Auth::check() && Auth::user()->permissions == "admin")
+        <button class="redbtn" id="show-comment-form">Bannir</button>
+
+        <form id="comment-form" method="POST" action="/admin/ban" hidden>
+            @csrf
+            <input type="text" name="id" id="" value="{{$user->id}}" hidden>
+            <label for="description">Raison : </label>
+            <textarea name="description" id="content" cols="100" rows="10"></textarea>
+            <br>
+            <button class="redbtn" type="submit">confirmer</button>
+        </form>
+    @endif
 </div>
 
 @if (!empty($comments))
@@ -35,4 +49,6 @@
     @endforeach
 </div>
 @endif
+<script src="{{asset("js/movieDetails.js")}}"></script>
+
 @endsection

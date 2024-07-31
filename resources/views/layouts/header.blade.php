@@ -155,11 +155,17 @@
         @if($user)     
             <a class="links" href="/list/{{Auth::id()}}">Ma liste</a>
             <a class="links" href="{{ route('profile.show', ['name' => Auth::user()->name]) }}">Profil</a>
+            
+            @if(Auth::user()->permissions == "admin")
+                <a class="links" href="/admin">Admin</a>
+            @endif
+            
             <a class="links" href="/logout">Deconnexion</a>
         @else
             <a class="links" href="/login">Connexion</a>
             <a class="links" href="/register">Inscription</a>
         @endif
+
     </div>
     <div class="burgersection">
     <button id="burgerMenuButton">☰</button>

@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('moderation_logs', function (Blueprint $table) {
             $table->id();
-            $table->text("content");
             $table->timestamps();
-            $table->foreignId('movie_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->noActionOnDelete();
+            $table->string("description", 500);
+            $table->enum("action", ["edit", "delete", "ban", "unban"]);
+            $table->unsignedBigInteger("user_id");
+
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('moderation_logs');
     }
 };

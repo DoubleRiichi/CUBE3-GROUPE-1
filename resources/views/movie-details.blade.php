@@ -85,11 +85,29 @@
             <span> {{substr($comment->user_created_at, 0, 10)}}</span>
             <img src="{{asset("storage/$comment->avatar")}}" alt="avatar">
             <span>{{$comment->badge}}</span>
+
         </div>
         <div class="box" id="comment">
             <div class="comment-date">
                 <span>Edited: {{$comment->updated_at}}</span>
                 <span>Posted: {{$comment->created_at}}</span>
+
+                @if(Auth::id() == $comment->user_id || Auth::user()->permissions == "admin")
+                <form action="/comment/delete" method="post">
+                    @csrf
+                    <input name="comment_id" type="text" hidden value="{{$comment->id}}">
+                <button class="redbtn" type="submit">Supprimer</button>
+                </form>
+
+                <button class="redbtn" id="show-comment-form">Editer</button>
+                
+                <form class="comment-form" action="/comment/update" method="post">
+                    @csrf
+                    <input type="text" hidden value="{{$comment->id}}" name="id">
+                    <textarea name="content" id="content" cols="100" rows="10"></textarea>
+                <button class="redbtn" type="submit">Valider</button>
+                </form>
+                @endif
             </div>
             <p class="comment-text">{{html_entity_decode($comment->content)}}</p>
             <!-- add a signature ? -->
