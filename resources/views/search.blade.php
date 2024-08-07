@@ -4,34 +4,30 @@
 
 <link rel="stylesheet" href="{{asset("css/search.css")}}">
 
-<div class="mainbox" id="search-area">
-    <form class="inline-form" id="search-form" method="POST" action="/search/">
-        @csrf
-        <div class="row">
-            <label for="title">Titre : </label>
-            <input type="text" name="title" id="" size="50"> 
-        </div>
-        <div class="row">
-            <label for="beforeDate">Avant : </label>
-            <input type="date" name="beforeDate" id=""> 
-            <label for="afterDate">Après : </label>
-            <input type="date" name="afterDate" id="">
-        </div>
-        <div class="row">
-            <label for="minimumRating">Note : </label>
-            <input type="text" name="minimumRating" id="" size="1">
-            <label for="minimumPopularity">Popularité : </label>
-            <input type="text" name="minimumPopularity" size="1">
-            <label for="minimumBudget">Budget : </label>
-            <input type="text" name="minimumBudget" id="" size="1">
-        </div>
-        <br>
-        <button class="redbtn" type="submit">Chercher</button>
-    </form>
-
+<div class="mainbox center w-50 row" id="search-area">
+    <div class="col-12 col-md-6 m-auto">
+        <form class="inline-form" id="search-form" method="POST" action="/search/">
+            @csrf
+        
+                <label class="form-label" for="title">Titre : </label>
+                <input class="form-control" type="text" name="title" id="" size="50"> 
+                <label class="form-label" for="beforeDate">Avant : </label>
+                <input class="form-control" type="date" name="beforeDate" id=""> 
+                <label class="form-label" for="afterDate">Après : </label>
+                <input class="form-control" type="date" name="afterDate" id="">
+                <label class="form-label" for="minimumRating">Note : </label>
+                <input class="form-control" type="text" name="minimumRating" id="" size="1">
+                <label class="form-label" for="minimumPopularity">Popularité : </label>
+                <input class="form-control" type="text" name="minimumPopularity" size="1">
+                <label class="form-label" for="minimumBudget">Budget : </label>
+                <input class="form-control" type="text" name="minimumBudget" id="" size="1">
+            <button class="btn btn-movie w-25 ml-5 mt-3" type="submit">Chercher</button>
+        </form>
+    </div>
     @if(isset($results))
-    <div id="search-results">
-        <table>
+    
+    <div id="search-results" class="col-12 mt-5 table-responsive">
+        <table class="table table-striped table-hover table-bordered">
             <caption>
                 Résultats
             </caption>
