@@ -49,7 +49,7 @@ class MovieDetailsController extends Controller
           $current_user = null;
         }
   
-        return response()->json([$movie, $comments, $current_user]);
+        return response()->json(["movie" => $movie, "comments" => $comments, "current_user" => $current_user]);
     }
 
     /**

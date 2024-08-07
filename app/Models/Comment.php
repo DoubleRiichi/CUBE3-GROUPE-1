@@ -65,6 +65,19 @@ class Comment extends Model
 
       $comment->save();
     }
+
+    public static function remove($id) {
+      $comment = Comment::find($id);
+      $comment->delete();
+    }
+
+    public static function edit($id, $content) {
+      $comment = Comment::find($id);
+      $comment->content = $content;
+
+      $comment->save();
+    }
+
 }
 
 

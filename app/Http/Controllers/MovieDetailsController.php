@@ -45,4 +45,32 @@ class MovieDetailsController extends Controller
       return redirect("/movie/$movie_id");
     }
 
+    public function deleteComment(Request $request) {
+
+      if(Auth::check()) {
+        $user = User::ById(Auth::id());
+        $comment = Comment::ById($request->comment_id);
+
+        if($user->permissions == "Admin" || $user->id == $comment->user_id)
+        Comment::remove($comment->id);
+      }
+
+      return redirect()->back();
+    }
+ 
+    public function updateComment(Request $request) {
+      if(Auth::check()) {
+        $user = User::ById(Auth::id());
+        $comment = Comment::ById($request->id);
+
+        if($user->permissions == "admin" || $user->id == $comment->user_id) {
+          $content = filter_var($request->content, FILTER_SANITIZE_SPECIAL_CHARS);
+          
+          Comment::edit($comment->id, $content);          
+        }
+      }
+
+      return redirect()->back();
+    }
+
 }
