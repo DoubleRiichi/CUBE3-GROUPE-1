@@ -11,20 +11,26 @@
 
 
 
-<div class="mainbox">
-@if ($errors->any())
-<div id="error-box">
-    @foreach ($errors->all() as $error)
-    <p>{{ $error }}</p>
-    @endforeach
-</div>
-@endif
-    <h1>Panneau d'administration</h1>
+<div class="row bg-white m-5">
+    <div class="col">
+    <div class="row">
+        <div class="col">
+        @if ($errors->any())
+        <div id="error-box">
+            @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+            @endforeach
+        </div>
+        @endif
 
-    <div class="main-area">
-        <div id="moderation-log">
+        <h1>Panneau d'administration</h1>
+        </div>
+    </div>
+
+    <div class="row my-4 bg-white">
+        <div class="col-md-10 table-responsive m-auto">
             <h2>Historique d'administration</h2>
-            <table>
+            <table class="table table-striped table-hover table-bordered">
             <caption>
             </caption>
             <thead>
@@ -58,12 +64,13 @@
             </table>
 
 
-        </div>
+    </div>
+</div>
+<div class="row">
+        <div class="col-md-10 table-responsive m-auto">
+            <h2>Derniers commentaires</h2>
 
-        <div id="last-comments">
-            <h2>derniers commentaires</h2>
-
-                <table>
+                <table class="table table-striped table-bordered table-hover">
                 <caption>
                     
                 </caption>
@@ -104,10 +111,11 @@
                 </table>
 
         </div>
-            
-        <div id="banned-user">
-        <h2>utilisateurs bannis</h2>
-            <table>
+</div>        
+<div class="row">
+        <div class="col-md-10 table-responsive m-auto">
+        <h2>Utilisateurs bannis</h2>
+            <table class="table table-bordered table-hover table-striped">
             <caption>
             </caption>
             <thead>
@@ -150,4 +158,6 @@
         </div>
     </div>
 </div>
+</div>
+
 @endsection
