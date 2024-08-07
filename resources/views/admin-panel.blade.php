@@ -30,6 +30,7 @@
             <thead>
                 <th scope="col">Action</th>
                 <th scope="col">Raison</th>
+                <th scope="col">Date</th>
                 <th scope="col">Par</th>
             </thead>
             <tbody>
@@ -40,6 +41,7 @@
                         <!-- TODO: dynamically fetch posters-->
                         <th scope="row">{{$moderation->action}}</th>
                         <td>{{$moderation->description}}</td>
+                        <td style="text-align: center;">{{$moderation->created_at->format("d-m-Y H:i:s")}}</td>
                         <td>{{User::find($moderation->user_id)->name}}</td>
                     </tr>   
                 @endforeach
@@ -84,8 +86,8 @@
                             <th scope="row"><a href="/movie/{{$comment->movie_id}}">{{$comment->movie_id}}</a></th>
                             <td><a href="/profile/{{$author->name}}">{{$author->name}}</a></td>
                             <td>{{$comment->content}}</td>
-                            <td>{{$comment->created_at}}</td>
-                            <td>{{$comment->updated_at}}</td>
+                            <td>{{$comment->created_at->format("d-m-Y H:i:s")}}</td>
+                            <td>{{$comment->updated_at->format("d-m-Y H:i:s")}}</td>
                         </tr>   
                     @endforeach
                 

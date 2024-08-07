@@ -12,7 +12,6 @@ use App\Http\Controllers\YouTubeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RecommendationController;
 
-
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 
@@ -50,7 +49,6 @@ Route::post('/profile/{name}', [ProfileController::class, "update"])->name('prof
 
 Route::get("/search", [SearchController::class, "show"]);
 Route::post("/search", [SearchController::class, "search"]);
-
 
 Route::get("/admin", [AdminController::class, "show"]);
 Route::post("/admin/ban", [AdminController::class, "ban"]);

@@ -27,3 +27,12 @@
     font-size: 15px;
 }
 
+
+.comments-action {
+    display: flex;
+    flex-direction: row;
+}
+
+.comments-action button {
+    max-height: 34.67px;
+}

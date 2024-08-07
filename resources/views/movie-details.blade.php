@@ -78,6 +78,7 @@
     @endif
 
     @if (!empty($comments))
+<?php $counter = 0; ?>
     @foreach ($comments as $comment)
     <div class="commentbox">
         <div class="box" id="user">
@@ -92,27 +93,33 @@
                 <span>Edited: {{$comment->updated_at}}</span>
                 <span>Posted: {{$comment->created_at}}</span>
 
-                @if(Auth::id() == $comment->user_id || Auth::user()->permissions == "admin")
-                <form action="/comment/delete" method="post">
-                    @csrf
-                    <input name="comment_id" type="text" hidden value="{{$comment->id}}">
-                <button class="redbtn" type="submit">Supprimer</button>
-                </form>
-
-                <button class="redbtn" id="show-comment-form">Editer</button>
-                
-                <form class="comment-form" action="/comment/update" method="post">
-                    @csrf
-                    <input type="text" hidden value="{{$comment->id}}" name="id">
-                    <textarea name="content" id="content" cols="100" rows="10"></textarea>
-                <button class="redbtn" type="submit">Valider</button>
-                </form>
-                @endif
             </div>
             <p class="comment-text">{{html_entity_decode($comment->content)}}</p>
             <!-- add a signature ? -->
+            @if(Auth::check())
+                    @if(Auth::id() == $comment->user_id || Auth::user()->permissions == "admin")
+            <div class="comments-action">
+                    <form action="/comment/delete" method="post">
+                        @csrf
+                        <input name="comment_id" type="text" hidden value="{{$comment->id}}">
+                    <button class="redbtn" type="submit">Supprimer</button>
+                    </form>
+
+                    <button class="redbtn" id="show-comment-form-{{$counter}}" onclick='display({{$counter}})'>Editer</button>
+                    
+                    <form id="comment-form-{{$counter}}" action="/comment/update" method="post" hidden>
+                        @csrf
+                        <input type="text" hidden value="{{$comment->id}}" name="id">
+                        <textarea name="content" id="content" cols="100" rows="10">{{html_entity_decode($comment->content)}}</textarea>
+                    <button class="redbtn" type="submit">Valider</button>
+                    </form>
+            </div>
+                    @endif
+            @endif
         </div>
+        
     </div>
+<?php $counter++; ?>
     @endforeach
     @else
     <p class="no-comment">Be the first to comment!</p>

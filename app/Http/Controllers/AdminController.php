@@ -64,7 +64,7 @@ class AdminController extends Controller
                 $target_user->delete();
 
                 
-                $description = "~> Admin $user->name a banni $target_user->name le " . date("d/m/Y à H:i:s") . "\n";
+                $description = "~> Admin $user->name a banni $target_user->name \n\n";
                 $description .= $request->description;
 
                 Moderation_Log::create([
@@ -108,7 +108,7 @@ class AdminController extends Controller
                 $target_user->delete();
 
                 
-                $description = "~> Admin $user->name a débanni $target_user->name le " . date("d/m/Y à H:i:s") . "\n";
+                $description = "~> Admin $user->name a débanni $target_user->name \n\n";
                 $description .= $request->description;
 
                 Moderation_Log::create([

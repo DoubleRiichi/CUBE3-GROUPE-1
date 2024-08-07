@@ -16,7 +16,7 @@
     @endif
 
 
-    @if (Auth::check() && Auth::user()->permissions == "admin")
+    @if (Auth::check() && Auth::user()->permissions == "admin" && $user->id != Auth::id())
         <button class="redbtn" id="show-comment-form">Bannir</button>
 
         <form id="comment-form" method="POST" action="/admin/ban" hidden>
@@ -38,8 +38,8 @@
         <div class="comment-header">
             <a href="/movie/{{$movie->id}}">{{$movie->title}}</a>
             <div class="comment-date">
-                <span>Edited: {{$comment->updated_at}}</span>
-                <span>Posted: {{$comment->created_at}}</span>
+                <span>Edited: {{$comment->updated_at->format("d-m-Y H:i:s")}}</span>
+                <span>Posted: {{$comment->created_at->format("d-m-Y H:i:s")}}</span>
             </div>
         </div>
         <p>{{html_entity_decode($comment->content)}}</p>
