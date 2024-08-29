@@ -56,13 +56,13 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            $user = User::ByEmail($request->email);
-            return response()->json(["status" => "success", "user" => $user]);
+        if (!Auth::attempt($credentials)) {
+            return response()->json(["status_code" => 500, "message" => 'non authorized']);
         }
 
+        $user = User::where('email', $request->email)->first();
+        $tokenResult = $user->createToken('authToken')->plainTextToken;
+        return response()->json(["status" => 200, 'access_token' => $tokenResult, "token_type" => 'Bearer']);
 
-        return response()->json(["status" => "fail", "user" => null]);
     }
 }
