@@ -82,9 +82,11 @@ class MovieDetailsController extends Controller
         $query->where("title", "like", "%$title%");
       }
 
-      $validSortColumns = ["title", "popularity", "release_date"];
-      if (in_array($sortBy, $validSortColumns)) {
-        $query->orderBy($sortBy, $sortOrder);
+      if($sortOrder && $sortBy) {
+        $validSortColumns = ["title", "popularity", "release_date"];
+        if (in_array($sortBy, $validSortColumns)) {
+          $query->orderBy($sortBy, $sortOrder);
+        }
       }
 
       $movies = $query->paginate($perPage, ["*"], "page", $page);
@@ -94,18 +96,20 @@ class MovieDetailsController extends Controller
     
     public function nowPlaying(Request $request)
     {
-      $page = $request->input("page", 1);
-      $perPage = $request->input("perPage", 10);
-      $movies = Movie::NowPlaying()->paginate($perPage, ["*"], "page", $page);
+      // $page = $request->input("page", 1);
+      // $perPage = $request->input("perPage", 10);
+      $movies = Movie::NowPlaying()->get();
+      //->paginate($perPage, ["*"], "page", $page);
 
       return response()->json($movies);
     }
 
-    public function upComing(Request $request)
+    public function upcoming(Request $request)
     {
-      $page = $request->input("page", 1);
-      $perPage = $request->input("perPage", 10);
-      $movies = Movie::Upcoming()->paginate($perPage, ["*"], "page", $page);
+      // $page = $request->input("page", 1);
+      // $perPage = $request->input("perPage", 10);
+      $movies = Movie::Upcoming()->get();
+      //->paginate($perPage, ["*"], "page", $page);
 
       return response()->json($movies);
     }

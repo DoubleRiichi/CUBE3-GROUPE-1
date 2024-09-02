@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    use HasFactory;
 
     protected $table = "movies";
     protected $primaryKey = "id";
@@ -58,7 +56,7 @@ class Movie extends Model
         $currentDate = now();
         $limitDate = now()->subDays(45);
 
-        return self::whereBetween("release_date", [$limitDate, $currentDate]);
+        return self::whereBetween("release_date", [$limitDate, $currentDate])->orderBy('release_date', 'desc');
     }
 
     public static function Upcoming() {
@@ -66,6 +64,11 @@ class Movie extends Model
         $limitDate = now()->addDays(30);
 
         return self::whereBetween("release_date", [$currentDate, $limitDate])->orderBy('release_date', 'asc');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
 

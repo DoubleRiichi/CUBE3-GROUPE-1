@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -50,5 +51,23 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function getUserData(Request $request)
+    {
+        return response()->json(Auth::user());
+    }
+
+    public function checkEmail(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email']
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        return response()->json([
+            'exists' => (bool) $user,
+        ]);
     }
 }

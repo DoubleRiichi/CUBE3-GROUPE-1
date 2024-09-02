@@ -49,20 +49,40 @@ class LoginController extends Controller
         //
     }
 
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
 
         $credentials = $request->validate([
-            'email'    => ['required', 'email'],
+            'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if (!Auth::attempt($credentials)) {
-            return response()->json(["status_code" => 500, "message" => 'non authorized']);
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json([
+                'status_code' => 404, 
+                'status' => 'error', 
+                'message' => 'Email inconnu'
+            ], 404);
         }
 
-        $user = User::where('email', $request->email)->first();
-        $tokenResult = $user->createToken('authToken')->plainTextToken;
-        return response()->json(["status" => 200, 'access_token' => $tokenResult, "token_type" => 'Bearer']);
+        if (!Auth::attempt($credentials)) {
+            return response()->json([
+                "status_code" => 401, 
+                "status" => 'error', 
+                "message" => 'Mot de passe incorrect'
+            ], 401);
+        }
+
+        $tokenResult = $user->createToken('authToken', ['*'], now()->addWeek())->plainTextToken;
+        return response()->json([
+            "status_code" => 200, 
+            'status' => 'success', 
+            'access_token' => $tokenResult, 
+            'token_type' => 'Bearer', 
+            'user' => $user
+        ], 200);
 
     }
 }
