@@ -9,9 +9,26 @@ class Listing_Movie extends Model
 {
     use HasFactory;
     protected $table = "listing_movies";
+    protected $fillable = ['status', 'movie_id', 'user_id'];
 
-    public function user(){
-        return $this->belongsTo(User::class, 'user_id');
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function movie() {
+        return $this->belongsTo(Movie::class);
+    }
+
+    public function markAsSeen()
+    {
+        $this->status = 'Vus';
+        $this->save();
+    }
+
+    public function markAsUnseen()
+    {
+        $this->status = 'À voir';
+        $this->save();
     }
 
     public static function ByUserId($userId, $limit = null) {

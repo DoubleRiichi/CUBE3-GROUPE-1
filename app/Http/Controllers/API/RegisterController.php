@@ -64,7 +64,7 @@ class RegisterController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(["status" => "fail", "user" => null]);
+            return response()->json($validator->errors(), 422);
         }
 
         $user = User::create([
@@ -78,9 +78,14 @@ class RegisterController extends Controller
         ]);
 
 
-        // auth()->login($user);
+        $token = $user->createToken("auth_token", ['*'], now()->addWeek())->plainTextToken;
 
-        return response()->json(["status" => "success", "user" => $user]);
-
+        return response()->json([
+            "status_code" => 200, 
+            'status' => 'success', 
+            'access_token' => $token, 
+            'token_type' => 'Bearer', 
+            'user' => $user
+        ], 200);
     }
 }

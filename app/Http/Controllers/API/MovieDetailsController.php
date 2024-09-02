@@ -15,13 +15,13 @@ class MovieDetailsController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all("*");
+      $movies = Movie::all("*");
 
-        if($movies == null) {
-          abort(404);
-        }
+      if($movies == null) {
+        abort(404);
+      }
 
-        return response()->json($movies);
+      return response()->json($movies);
     }
 
     /**
@@ -66,5 +66,58 @@ class MovieDetailsController extends Controller
     public function destroy(Movie $movie)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+      $title = $request->input("title");
+      $sortOrder = $request->input("sortOrder");
+      $sortBy = $request->input("sortBy");
+      $page = $request->input("page", 1);
+      $perPage = $request->input("perPage", 10);
+
+      $query = Movie::query();
+
+      if ($title) {
+        $query->where("title", "like", "%$title%");
+      }
+
+      if($sortOrder && $sortBy) {
+        $validSortColumns = ["title", "popularity", "release_date"];
+        if (in_array($sortBy, $validSortColumns)) {
+          $query->orderBy($sortBy, $sortOrder);
+        }
+      }
+
+      $movies = $query->paginate($perPage, ["*"], "page", $page);
+
+      return response()->json($movies);
+    }
+    
+    public function nowPlaying(Request $request)
+    {
+      // $page = $request->input("page", 1);
+      // $perPage = $request->input("perPage", 10);
+      $movies = Movie::NowPlaying()->get();
+      //->paginate($perPage, ["*"], "page", $page);
+
+      return response()->json($movies);
+    }
+
+    public function upcoming(Request $request)
+    {
+      // $page = $request->input("page", 1);
+      // $perPage = $request->input("perPage", 10);
+      $movies = Movie::Upcoming()->get();
+      //->paginate($perPage, ["*"], "page", $page);
+
+      return response()->json($movies);
+    }
+
+    public function topPopular()
+    {
+      $movies = Movie::MostPopular(10);
+
+      return response()->json($movies);
     }
 }

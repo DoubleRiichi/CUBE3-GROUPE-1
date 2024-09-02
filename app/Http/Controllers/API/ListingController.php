@@ -3,77 +3,92 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Listing_Movie;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Listing_Movie;
+use App\Models\Movie;
 
 class ListingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+  public function addMovieToList(Request $request)
+  {
+      $request->validate([
+          'movie_id' => ['required', 'exists:movies,id'],
+          'status' => ['required', 'string'],
+      ]);
+      $user = Auth::user();
+      $movie = Movie::find($request->movie_id);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        
-        if(Auth::user()->id == $request->user_id) {
-            if(!is_numeric($request->rating ))
-              return redirect()->back()->withErrors("Une note doit être une valeur numérique.");
-  
-            if($request->rating > 10 || $request->rating < 0)
-              return redirect()->back()->withErrors("La note ne peut être supérieure à 10 ou inférieure à 0.");
-  
-            
-            Listing_Movie::InseretMovie(
-                $request->user_id,
-                $request->movie_id,
-                $request->status,
-                $request->rating
-            );
-              
-              return redirect("api/list/$request->user_id");
-  
-          }
-  
-          abort("503");
+      $listItem= Listing_Movie::create([
+          'user_id' => $user->id,
+          'movie_id' => $movie->id,
+          'status' => $request->status,
+      ]);
+
+      return response()->json([
+          "status_code" => 200,
+          "status" => "success",
+          "message" => "Film ajouté avec succès",
+          "item" => $listItem,
+          "item_movie" => $movie
+      ], 200);
+  }
+
+  public function removeMovieFromList($id)
+  {
+      $user = Auth::user();
+      $listItem = Listing_Movie::find($id);
+
+      if (!$listItem || $listItem->user_id != $user->id) {
+          return response()->json([
+              "status_code" => 404,
+              "status" => "error",
+              "message" => "Film non trouvé ou non autorisé"
+          ], 404);
       }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        //add error handling
-        $user = User::ById($id);
-        if($id == null or $user == null) {
-          abort(404);
-        } 
-        $list = Listing_Movie::JoinListingAndMovie($user->id);
+      $listItem->delete();
 
-        return response()->json(["list" => $list, "user" => $user]);
-    }
+      return response()->json([
+          "status_code" => 200,
+          "status" => "success",
+          "message" => "Film supprimé avec succès"
+      ], 200);
+  }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Listing_Movie $listing_Movie)
-    {
-        //
-    }
+  public function toggleMovieStatus($id)
+  {
+      $user = Auth::user();
+      $listItem = Listing_Movie::find($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Listing_Movie $listing_Movie)
+      if (!$listItem || $listItem->user_id != $user->id) {
+          return response()->json([
+              "status_code" => 404,
+              "status" => "error",
+              "message" => "Film non trouvé ou non autorisé"
+          ], 404);
+      }
+
+      if ($listItem->status == "Vus") {
+          $listItem->markAsUnseen();
+      } else {
+          $listItem->markAsSeen();
+      }
+      $listItem->save();
+
+      return response()->json([
+          "status_code" => 200,
+          "status" => "success",
+          "message" => "Statut du film modifié avec succès",
+          "item_status" => $listItem->status
+      ], 200);
+  }
+
+
+    public function getUserMovieList()
     {
-        //
+      $user = Auth::user();
+      $listingMovies = $user->listingMovies()->with('movie')->get();
+      return response()->json($listingMovies);
     }
 }
