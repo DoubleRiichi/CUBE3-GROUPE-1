@@ -36,7 +36,7 @@ class ProfileController extends Controller
           'name' => 'required|string|max:255',
           'email' => 'required|string|email|max:255',
           'badge' => 'required|string|max:255',
-          'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
       ]);
 
       $user = User::where('name', $name)->firstOrFail();

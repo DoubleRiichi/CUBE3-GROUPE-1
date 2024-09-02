@@ -9,10 +9,8 @@
 <link rel="stylesheet" href="{{ asset("css/comments.css")}}">
 <link rel="stylesheet" href="{{asset("css/search.css")}}">
 
-
-
-<div class="row bg-white m-5">
-    <div class="col">
+<div class="row ">
+    <div class="col col-md-8 mx-auto bg-white my-4 py-4">
     <div class="row">
         <div class="col">
         @if ($errors->any())
@@ -28,7 +26,7 @@
     </div>
 
     <div class="row my-4 bg-white">
-        <div class="col-md-10 table-responsive m-auto">
+        <div class="col col-md-10 table-responsive m-auto">
             <h2>Historique d'administration</h2>
             <table class="table table-striped table-hover table-bordered">
             <caption>
@@ -67,7 +65,8 @@
     </div>
 </div>
 <div class="row">
-        <div class="col-md-10 table-responsive m-auto">
+    <hr>
+        <div class="col col-md-10 table-responsive m-auto">
             <h2>Derniers commentaires</h2>
 
                 <table class="table table-striped table-bordered table-hover">
@@ -113,7 +112,8 @@
         </div>
 </div>        
 <div class="row">
-        <div class="col-md-10 table-responsive m-auto">
+<hr>
+        <div class="col col-md-10 table-responsive m-auto">
         <h2>Utilisateurs bannis</h2>
             <table class="table table-bordered table-hover table-striped">
             <caption>
@@ -142,7 +142,7 @@
                     </tr>   
                 @endforeach
             @else
-            <tr> <th scope="row" colspan="5">Pas de bans = pas d'utilisateurs :)</th></tr>
+            <tr> <th scope="row" colspan="5">Aucun utilisateur banni!</th></tr>
             @endif   
                 </tbody>
                 <tfoot>

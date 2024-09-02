@@ -179,6 +179,9 @@
         @if($user)     
             <a class="burgerking" href="/list/{{Auth::id()}}">Ma liste</a>
             <a class="burgerking" href="{{ route('profile.show', ['name' => Auth::user()->name]) }}">Profil</a>
+            @if (Auth::user()->permissions == "admin")
+                <a class="burgerking" href="/admin">Admin</a>
+            @endif
             <a class="burgerking" href="/logout">Deconnexion</a>
         @else
             <a class="burgerking" href="/login">Connexion</a>
