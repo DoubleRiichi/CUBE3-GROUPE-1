@@ -13,9 +13,11 @@
 @endif
 <div class="row">
     <div class="bg-white col-12 col-md-10 p-4 m-auto" id="movie">
+
         <div class="row">
-        <h2>{{ stripslashes($movie->title) }} <span> {{ stripslashes($movie->original_title) }}</span></h2>
+        <h2>{{stripslashes($movie->title) }} <span> {{ stripslashes($movie->original_title) }}</span></h2>
         </div>
+
         <div class="row">
             <div class="col-12 col-md-4">
                 @if ($movie->poster_path)
@@ -62,7 +64,6 @@
                         </form>
                     </div>
                     @endif
-
                 </div>  
             </div>
         </div>
@@ -78,37 +79,37 @@
             @if($current_user)
             <button class="redbtn" id="show-comment-form">Commenter</button>
 
-            <form id="comment-form" method="POST" action="/movie/{{$movie->id}}" hidden>
+            <form class="form mt-3" id="comment-form" method="POST" action="/movie/{{$movie->id}}" hidden>
                 @csrf
-                <textarea name="content" id="content" cols="100" rows="10"></textarea>
+                <textarea class="form-control" rows="5" name="content" id="content"></textarea>
                 <br>
                 <button class="redbtn" type="submit">Poster</button>
             </form>
             @endif
             </div>
         </div>
-    @if (!empty($comments))
+    @if(!empty($comments))
     <?php $counter = 0; ?>
     @foreach ($comments as $comment)
     <div class="commentbox row p-2">
-        <div class="box col-4 col-md-2" id="user">
+        <div class="box col-3 col-md-2" id="user">
             <span> <a href="/profile/{{$comment->username}}">{{$comment->username}}</a></span>
             <span> {{substr($comment->user_created_at, 0, 10)}}</span>
             <img class="img-fluid img-thumbnail" src="{{asset("storage/$comment->avatar")}}" alt="avatar">
             <span>{{$comment->badge}}</span>
 
         </div>
-        <div class="col-md-10 col-12" id="comment">
+        <div class="col-md-10 col" id="comment">
             <div class="row">
                 <div class="comment-date">
                     <span>Edited: {{$comment->updated_at}}</span>
                     <span>Posted: {{$comment->created_at}}</span>
-
                 </div>
             </div>
             <div class="row">
-
-            <p class="comment-text">{{html_entity_decode($comment->content)}}</p>
+                <div class="col">
+                    <p class="comment-text">{{html_entity_decode($comment->content)}}</p>
+                </div>
             <!-- add a signature ? -->
             </div>
             <div class="row">

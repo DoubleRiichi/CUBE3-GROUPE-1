@@ -4,8 +4,8 @@
 
 <link rel="stylesheet" href="{{asset("css/search.css")}}">
 
-<div class="mainbox center w-50 row" id="search-area">
-    <div class="col-12 col-md-6 m-auto">
+<div class=" mt-4  row" id="search-area">
+    <div class="col-12 bg-light col-md-6 m-auto">
         <form class="inline-form" id="search-form" method="POST" action="/search/">
             @csrf
         
@@ -21,16 +21,15 @@
                 <input class="form-control" type="text" name="minimumPopularity" size="1">
                 <label class="form-label" for="minimumBudget">Budget : </label>
                 <input class="form-control" type="text" name="minimumBudget" id="" size="1">
-            <button class="btn btn-movie w-25 ml-5 mt-3" type="submit">Chercher</button>
+            <button class="btn btn-movie ml-5 mt-3" type="submit">Chercher</button>
         </form>
     </div>
     @if(isset($results))
-    
-    <div id="search-results" class="col-12 mt-5 table-responsive">
+<div class="row ">
+    <div id="" class=" mx-auto  p-4 bg-light col-12 col-md-6 mt-5 table-responsive">
         <table class="table table-striped table-hover table-bordered">
-            <caption>
-                Résultats
-            </caption>
+ 
+        
             <thead>
                 <tr>
                 <th scope="col">Titre</th>
@@ -68,6 +67,7 @@
         </table>
 
     </div>
+</div>
     @endif
 <br>
     @if ($errors->any())
