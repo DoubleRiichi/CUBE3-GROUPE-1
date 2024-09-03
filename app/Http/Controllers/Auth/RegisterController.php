@@ -42,7 +42,7 @@ class RegisterController extends Controller
         ]);
 
 
-        // auth()->login($user);
+        auth()->login($user);
 
         return redirect('/home');
     }
@@ -54,15 +54,13 @@ class RegisterController extends Controller
 
     public function handleGoogleCallback()
     {
-        try {
-            $googleUser = Socialite::driver('google')->user();
+        
+        $googleUser = Socialite::driver('google')->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))->user();
+
             $user = User::where('email', $googleUser->getEmail())->first();
 
-            if ($user) {
-                Auth::login($user);
-                return redirect()->route('home');
-            } else {
-                // Créez un nouvel utilisateur avec les informations de Google
+            if (!$user) {
+
                 $user = User::create([
                     'name' => $googleUser->getName(),
                     'email' => $googleUser->getEmail(),
@@ -70,15 +68,16 @@ class RegisterController extends Controller
                     'username' => $googleUser->getNickname() ?: $googleUser->getName(),
                     'permissions' => 'user',
                     'avatar' => $googleUser->getAvatar(),
-                    'badge' => null,
+                    'badge' => 'user',
                 ]);
 
                 Auth::login($user);
-                return redirect()->route('home');
+                return redirect('/home');
+            } else {
+                // Créez un nouvel utilisateur avec les informations de Google
+                Auth::login($user);
+                return redirect('/home');
             }
 
-        } catch (Exception $e) {
-            return redirect()->route('register')->with('error', 'Something went wrong. Please try again.');
-        }
     }
 }
