@@ -8,12 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-
-
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -68,6 +67,15 @@ class User extends Authenticatable
         return Attribute::make(
             get: fn ($value) => $value ? asset('storage/' . $value) : null,
         );
-    
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function listingMovies()
+    {
+        return $this->hasMany(Listing_Movie::class);
     }
 }

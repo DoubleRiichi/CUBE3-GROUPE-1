@@ -18,7 +18,7 @@ class ListingController extends Controller
         } 
         $list = Listing_Movie::JoinListingAndMovie($user->id);
 
-        return view("listing", compact("user", "list"));
+        return view("listing", compact("user", "list")); 
       }
   
       public function add(Request $request) {

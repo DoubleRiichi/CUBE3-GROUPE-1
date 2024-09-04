@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    use HasFactory;
 
     protected $table = "movies";
     protected $primaryKey = "id";
@@ -21,7 +19,6 @@ class Movie extends Model
     }
 
     public static function ById($id) {
-        
         return self::find($id); 
     }
 
@@ -53,6 +50,25 @@ class Movie extends Model
 
     public static function MultipleWhere($keywords, $params) {
         return self::where(array_merge($keywords, $params))->get();
+    }
+
+    public static function NowPlaying() {
+        $currentDate = now();
+        $limitDate = now()->subDays(45);
+
+        return self::whereBetween("release_date", [$limitDate, $currentDate])->orderBy('release_date', 'desc');
+    }
+
+    public static function Upcoming() {
+        $currentDate = now();
+        $limitDate = now()->addDays(30);
+
+        return self::whereBetween("release_date", [$currentDate, $limitDate])->orderBy('release_date', 'asc');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
 

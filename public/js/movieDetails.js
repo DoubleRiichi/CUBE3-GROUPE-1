@@ -21,4 +21,10 @@
         else
             showAddBtn.innerText = "Retour";
     });
+
+
+    function display(id) {
+        form = document.getElementById("comment-form-" + id);
+        form.hidden = form.hidden ? false : true;
+    }
 }

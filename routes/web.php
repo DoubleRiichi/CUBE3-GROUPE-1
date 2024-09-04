@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProfileController;
@@ -9,19 +10,20 @@ use App\Http\Controllers\ListingController;
 use App\Http\Controllers\MovieDetailsController;
 use App\Http\Controllers\YouTubeController;
 use App\Http\Controllers\SearchController;
-
-
+use App\Http\Controllers\RecommendationController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/trailers', [YouTubeController::class, 'fetchTrailers']);
 
-//retourne la vue trailer en cliquant sur Recherche
-Route::get('/search', function () {
-    return redirect('/trailers');
-});
+Route::get('/recommendation-form', [RecommendationController::class, 'showForm'])->name('showForm');
+Route::post('/recommend', [RecommendationController::class, 'recommend'])->name('recommend');
 
+
+Route::get('/Subscription',[RegisterController::class,'showRegistrationForm'])->name('register');
+
+Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name('register');
 Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name('register');
 Route::post('/register',[RegisterController::class,'register'])->name('register');
 
@@ -47,3 +49,10 @@ Route::post('/profile/{name}', [ProfileController::class, "update"])->name('prof
 
 Route::get("/search", [SearchController::class, "show"]);
 Route::post("/search", [SearchController::class, "search"]);
+
+Route::get("/admin", [AdminController::class, "show"]);
+Route::post("/admin/ban", [AdminController::class, "ban"]);
+Route::post("/admin/unban", [AdminController::class, "unban"]);
+
+Route::post("/comment/delete", [MovieDetailsController::class, "deleteComment"]);
+Route::post("/comment/update", [MovieDetailsController::class, "updateComment"]);

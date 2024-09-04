@@ -2,15 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    use HasFactory;
-
-    protected $table = "comments";
-    protected $primaryKey = "id";
+    protected $fillable = ['content', 'movie_id', 'user_id'];
 
 
     public static function ById($id) {
@@ -64,6 +60,26 @@ class Comment extends Model
       $comment->content = $content; 
 
       $comment->save();
+    }
+
+    public static function remove($id) {
+      $comment = Comment::find($id);
+      $comment->delete();
+    }
+
+    public static function edit($id, $content) {
+      $comment = Comment::find($id);
+      $comment->content = $content;
+
+      $comment->save();
+    }
+
+    public function user() {
+      return $this->belongsTo(User::class);
+    }
+
+    public function movie() {
+      return $this->belongsTo(Movie::class);
     }
 }
 
