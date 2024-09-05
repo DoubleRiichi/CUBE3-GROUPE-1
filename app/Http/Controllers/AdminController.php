@@ -38,7 +38,6 @@ class AdminController extends Controller
 
         $validator = AdminController::validate($request);
 
-        
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
@@ -63,7 +62,6 @@ class AdminController extends Controller
 
                 $target_user->delete();
 
-                
                 $description = "~> Admin $user->name a banni $target_user->name \n\n";
                 $description .= $request->description;
 
@@ -82,7 +80,6 @@ class AdminController extends Controller
     public function unban(Request $request) {
         $validator = AdminController::validate($request);
 
-        
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
@@ -107,7 +104,6 @@ class AdminController extends Controller
 
                 $target_user->delete();
 
-                
                 $description = "~> Admin $user->name a débanni $target_user->name \n\n";
                 $description .= $request->description;
 

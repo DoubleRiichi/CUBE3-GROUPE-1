@@ -67,13 +67,22 @@ class RegisterController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
+
+        $avatars = [
+            'avatars/default_avatars/Avatar_1.png',
+            'avatars/default_avatars/Avatar_2.png',
+            'avatars/default_avatars/Avatar_3.png',
+            'avatars/default_avatars/Avatar_4.png'
+        ];
+        $randomAvatar = $avatars[array_rand($avatars)];
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'username' => $request->username,
             'permissions' => "user",
-            'avatar' => "avatar",
+            'avatar' => $randomAvatar,
             'badge' => "user",
         ]);
 
