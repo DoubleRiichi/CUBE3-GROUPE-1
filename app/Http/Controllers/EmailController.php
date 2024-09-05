@@ -28,10 +28,7 @@ class EmailController extends Controller
              * Check if the email has been sent successfully, or not.
              * Return the appropriate message.
              */
-            if (Mail::failures() != 0) {
-                return "Email has been sent successfully.";
-            }
-            return "Oops! There was some error sending the email.";
+
         }
     }
 

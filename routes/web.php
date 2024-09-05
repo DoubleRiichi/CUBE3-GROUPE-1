@@ -58,7 +58,4 @@ Route::post("/admin/unban", [AdminController::class, "unban"]);
 Route::post("/comment/delete", [MovieDetailsController::class, "deleteComment"]);
 Route::post("/comment/update", [MovieDetailsController::class, "updateComment"]);
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('send-email', [EmailController::class, 'sendEmail']);
