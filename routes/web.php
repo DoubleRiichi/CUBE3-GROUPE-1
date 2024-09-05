@@ -11,6 +11,7 @@ use App\Http\Controllers\MovieDetailsController;
 use App\Http\Controllers\YouTubeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RecommendationController;
+use App\Http\Controllers\EmailController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
@@ -56,3 +57,8 @@ Route::post("/admin/unban", [AdminController::class, "unban"]);
 
 Route::post("/comment/delete", [MovieDetailsController::class, "deleteComment"]);
 Route::post("/comment/update", [MovieDetailsController::class, "updateComment"]);
+
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('send-email', [EmailController::class, 'sendEmail']);
