@@ -17,6 +17,7 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user', [UserController::class, 'getUserData']);
     Route::get('/user/comments', [CommentController::class, 'getUserComments']);
     Route::get('/user/movielist', [ListingController::class, 'getUserMovieList']);
+    Route::post('/user/avatar', [UserController::class, 'updateUserAvatar']);
     Route::post('/comment', [CommentController::class,'addComment']);
     Route::delete('/comments/{id}', [CommentController::class,'removeComment']);
     Route::put('/comments/{id}', [CommentController::class,'updateComment']);

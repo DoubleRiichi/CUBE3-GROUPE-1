@@ -10,7 +10,9 @@
     <p class="fs-4 ">Profil de {{ $user->name }}</p>
     <div class="row">
         <div class="col-3">
-            <img src="{{ asset($user->avatar) }}" alt="Avatar" width="100">
+            <div class="avatar-container">
+                <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="avatar">
+            </div>
         </div>
         <div class="col text-start">
             <p>{{ $user->email }}</p>
