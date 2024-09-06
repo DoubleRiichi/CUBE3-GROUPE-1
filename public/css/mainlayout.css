@@ -26,6 +26,11 @@ button,
     background-color: #35607c;
 }
 
+.bluebtn:hover {
+    color: white;
+    background-color: #203442;
+}
+
 .redbtn {
     background-color: brown;
 }

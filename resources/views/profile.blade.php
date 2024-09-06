@@ -24,14 +24,14 @@
 
 
     @if (Auth::check() && Auth::user()->name == $user->name)
-    <a href="{{route('profile.edit', ['name' => $user->name]) }}">Modifier les informations du profil</a>
+    <a href="{{route('profile.edit', ['name' => $user->name]) }}" class='btn bluebtn'>Modifier les informations du profil</a>
     @endif
 
 
     @if (Auth::check() && Auth::user()->permissions == "admin" && $user->id != Auth::id())
         <div class="row">
             <div class="col ">
-                <button class="redbtn" id="show-comment-form">Bannir</button>
+                <button class="bluebtn" id="show-comment-form">Bannir</button>
 
                 <form id="comment-form" method="POST" action="/admin/ban" hidden>
                     @csrf
@@ -39,7 +39,7 @@
                     <label for="description">Raison : </label>
                     <textarea name="description" id="content" cols="100" rows="10"></textarea>
                     <br>
-                    <button class="redbtn" type="submit">confirmer</button>
+                    <button class="bluebtn" type="submit">confirmer</button>
                 </form>
             </div>
         </div>

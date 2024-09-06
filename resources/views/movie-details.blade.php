@@ -45,7 +45,7 @@
 
                     @if (Auth::check())
                     <div id="add-list-area">
-                        <button class="redbtn" id="add-list-btn">Ajouter</button>
+                        <button class="bluebtn" id="add-list-btn">Ajouter</button>
                         <form hidden id="add-list-form" method="POST" action="/list/{{Auth::id()}}">
                             @csrf
 
@@ -60,7 +60,7 @@
                             <input type="text" name="movie_id" hidden value="{{$movie->id}}">
                             <input type="text" name="user_id" hidden value="{{$current_user->id}}">
 
-                            <button class="redbtn" id="inline-submit-btn" type="submit">Ajouter</button>
+                            <button class="bluebtn" id="inline-submit-btn" type="submit">Ajouter</button>
                         </form>
                     </div>
                     @endif
@@ -77,13 +77,13 @@
             <h2>Commentaires</h2>
             <!--TODO: add a way to get the current login user ID, and check if they're connected -->
             @if($current_user)
-            <button class="redbtn" id="show-comment-form">Commenter</button>
+            <button class="bluebtn" id="show-comment-form">Commenter</button>
 
             <form class="form mt-3" id="comment-form" method="POST" action="/movie/{{$movie->id}}" hidden>
                 @csrf
                 <textarea class="form-control" rows="5" name="content" id="content"></textarea>
                 <br>
-                <button class="redbtn" type="submit">Poster</button>
+                <button class="bluebtn" type="submit">Poster</button>
             </form>
             @endif
             </div>
@@ -119,10 +119,10 @@
                         <form action="/comment/delete" method="post">
                             @csrf
                             <input name="comment_id" type="text" hidden value="{{$comment->id}}">
-                        <button class="redbtn" type="submit">Supprimer</button>
+                        <button class="bluebtn" type="submit">Supprimer</button>
                         </form>
 
-                        <button class="redbtn" id="show-comment-form-{{$counter}}" onclick='display({{$counter}})'>Editer</button>
+                        <button class="bluebtn" id="show-comment-form-{{$counter}}" onclick='display({{$counter}})'>Editer</button>
                         
                     </div>
                     
@@ -131,7 +131,7 @@
                             @csrf
                             <input type="text" hidden value="{{$comment->id}}" name="id">
                             <textarea class="form-control" name="content" id="content" cols="100" rows="10">{{html_entity_decode($comment->content)}}</textarea>
-                        <button class="redbtn" type="submit">Valider</button>
+                        <button class="bluebtn" type="submit">Valider</button>
                         </form>
                     </div>
                     @endif

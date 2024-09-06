@@ -38,7 +38,7 @@
             <input type="text" id="username" name="username" value="{{ old('username') }}" required>
         </div>
         <div>
-            <button class="redbtn" type="submit">S'inscrire</button>
+            <button class="bluebtn" type="submit">S'inscrire</button>
         </div>
 
     </form>

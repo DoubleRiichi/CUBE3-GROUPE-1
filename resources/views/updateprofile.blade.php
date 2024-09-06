@@ -52,7 +52,7 @@
             </div>
             @endif
         </div>
-        <button type="submit" class="redbtn">Mettre à jour</button>
+        <button type="submit" class="bluebtn">Mettre à jour</button>
     </form>
 </div>
 @endsection
