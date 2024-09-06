@@ -1,5 +1,6 @@
 @extends('layouts.mainlayout')
 
+@section ('title', 'Accueil')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 <div class="mainbox">

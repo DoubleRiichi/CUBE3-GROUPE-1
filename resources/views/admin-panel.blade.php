@@ -4,6 +4,8 @@
 ?>
 @extends('layouts.mainlayout')
 
+@section ('title', 'Interface d\'administration')
+
 @section('content')
 <link rel="stylesheet" href="{{ asset("css/movie-details.css")}}">
 <link rel="stylesheet" href="{{ asset("css/comments.css")}}">

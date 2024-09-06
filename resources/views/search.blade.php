@@ -1,5 +1,5 @@
 @extends('layouts.mainlayout')
-
+@section ('title', 'Recherche')
 @section("content")
 
 <link rel="stylesheet" href="{{asset("css/search.css")}}">

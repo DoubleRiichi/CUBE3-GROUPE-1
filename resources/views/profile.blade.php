@@ -1,7 +1,7 @@
 <?php 
        use App\Models\Movie; ?>
 @extends('layouts.mainlayout')
-
+@section ('title', 'Profil de ' . $user->name)
 @section('content')
 <link rel="stylesheet" href="{{ asset("css/profil.css")}}">
 <div class="row" id="profil">

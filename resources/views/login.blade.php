@@ -1,5 +1,5 @@
 @extends('layouts.mainlayout')
-
+@section ('title', 'Connexion')
 @section('content')
 <!-- <link rel="stylesheet" href="{{ asset("css/register.css")}}"> -->
 <div class="row" id="register">

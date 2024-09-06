@@ -1,5 +1,5 @@
 @extends('layouts.mainlayout')
-<!-- USE JOIN TABLE -->
+@section ('title', $movie->title)
 @section("content")
 
 <link rel="stylesheet" href="{{ asset("css/movie-details.css")}}">

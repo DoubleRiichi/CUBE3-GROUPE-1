@@ -1,5 +1,5 @@
 @extends('layouts.mainlayout')
-
+@section ('title', 'Modification de profil')
 @section('content')
 <link rel="stylesheet" href="{{ asset("css/profil.css")}}">
 @if (session('success'))
