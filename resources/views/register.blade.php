@@ -1,5 +1,5 @@
 @extends('layouts.mainlayout')
-
+@section ('title', 'Inscription')
 @section('content')
 <link rel="stylesheet" href="{{ asset("css/register.css")}}">
 <div class="mainbox" id="register">
