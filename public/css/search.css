@@ -47,11 +47,3 @@ th a span {
 th a:hover span {
   display: block;
 }
-
-.btn-movie {
-  background-color: brown;
-}
-
-.btn-movie:hover {
-  background-color: rgb(221, 60, 60);
-} 
