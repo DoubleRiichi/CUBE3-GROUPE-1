@@ -11,9 +11,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $limit = 5; // ou tout autre nombre que vous souhaitez
-        $mostPopularMovies = Movie::MostPopular($limit);
+        $mostPopularMovies = Movie::MostPopular(10);
+        $upcomingMovies = Movie::Upcoming()->get();
+        $nowPlayingMovies = Movie::NowPlaying()->get();
 
-        return view('index', compact('mostPopularMovies'));
+        return view('index', compact('mostPopularMovies', 'upcomingMovies', 'nowPlayingMovies'));
     }
 }
