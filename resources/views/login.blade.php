@@ -28,7 +28,7 @@
             <div class="row d-flex align-items-center mx-0 p-0">
                 <div class="col-7 text-end">
                     <div>
-                        <button class="bluebtn" type="submit">Se connecter</button>  
+                        <button class="bluebtn" type="submit">Se connecter</button>
                     </div>
                 </div>
                 <div class="col-5 text-start">

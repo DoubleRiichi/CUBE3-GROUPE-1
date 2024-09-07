@@ -44,7 +44,7 @@ class UserController extends Controller
     public function updateUserAvatar(Request $request)
     {
         $user = Auth::user();
- 
+
         if (!$request->hasFile('avatar')) {
             return response()->json(['error' => 'No file uploaded'], 400);
         }

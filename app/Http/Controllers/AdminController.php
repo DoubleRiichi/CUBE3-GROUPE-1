@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
-    private static function is_admin() {
-        if(Auth::check()) {
+    private static function is_admin()
+    {
+        if (Auth::check()) {
             $user = User::find(Auth::id());
-            if($user->permissions == "admin") {
+            if ($user->permissions == "admin") {
                 return true;
             }
         }
@@ -25,7 +26,8 @@ class AdminController extends Controller
     }
 
 
-    private static function validate(Request $request) {
+    private static function validate(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
             'description' => 'required|string|max:400',
@@ -34,7 +36,8 @@ class AdminController extends Controller
         return $validator;
     }
 
-    public function ban(Request $request) {
+    public function ban(Request $request)
+    {
 
         $validator = AdminController::validate($request);
 
@@ -42,11 +45,11 @@ class AdminController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if(AdminController::is_admin()) {
+        if (AdminController::is_admin()) {
             $target_user = User::find($request->id);
             $user = User::find(Auth::id());
 
-            if($target_user && $target_user->permissions != "admin") {
+            if ($target_user && $target_user->permissions != "admin") {
                 Banned_User::createOrFirst([
                     'id' => $target_user->id,
                     'name' => $target_user->name,
@@ -77,18 +80,19 @@ class AdminController extends Controller
     }
 
 
-    public function unban(Request $request) {
+    public function unban(Request $request)
+    {
         $validator = AdminController::validate($request);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        if(AdminController::is_admin()) {
+        if (AdminController::is_admin()) {
             $target_user = Banned_User::find($request->id);
             $user = User::find(Auth::id());
 
-            if($target_user) {
+            if ($target_user) {
                 User::createOrFirst([
                     'id' => $target_user->id,
                     'name' => $target_user->name,
@@ -118,9 +122,10 @@ class AdminController extends Controller
         }
     }
 
-    public function show() {
+    public function show()
+    {
 
-        if(!AdminController::is_admin()) {
+        if (!AdminController::is_admin()) {
             return redirect()->back();
         }
 

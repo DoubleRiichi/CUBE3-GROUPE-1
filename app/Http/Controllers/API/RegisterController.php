@@ -90,10 +90,10 @@ class RegisterController extends Controller
         $token = $user->createToken("auth_token", ['*'], now()->addWeek())->plainTextToken;
 
         return response()->json([
-            "status_code" => 200, 
-            'status' => 'success', 
-            'access_token' => $token, 
-            'token_type' => 'Bearer', 
+            "status_code" => 200,
+            'status' => 'success',
+            'access_token' => $token,
+            'token_type' => 'Bearer',
             'user' => $user
         ], 200);
     }

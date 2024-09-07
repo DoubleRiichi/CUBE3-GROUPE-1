@@ -21,11 +21,11 @@ Route::get('/recommendation-form', [RecommendationController::class, 'showForm']
 Route::post('/recommend', [RecommendationController::class, 'recommend'])->name('recommend');
 
 
-Route::get('/Subscription',[RegisterController::class,'showRegistrationForm'])->name('register');
+Route::get('/Subscription', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
-Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name('register');
-Route::get('/register',[RegisterController::class,'showRegistrationForm'])->name('register');
-Route::post('/register',[RegisterController::class,'register'])->name('register');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 Route::get('/login', [LoginController::class, "show"])->name("login");
 Route::post('/login', [LoginController::class, "login"])->name("login");
