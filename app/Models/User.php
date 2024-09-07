@@ -52,20 +52,22 @@ class User extends Authenticatable
         ];
     }
 
-    public static function ById($id) {
+    public static function ById($id)
+    {
 
         return self::find($id);
     }
 
-    public static function ByEmail($email) {
-        
+    public static function ByEmail($email)
+    {
+
         return self::where("email", "=", $email)->get();
     }
 
     protected function avatar(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => $value ? asset('storage/' . $value) : null,
+            get: fn($value) => $value ? asset('storage/' . $value) : null,
         );
     }
 

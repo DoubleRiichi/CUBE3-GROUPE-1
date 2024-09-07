@@ -27,7 +27,8 @@ class Banned_User extends Model
         'remember_token',
     ];
 
-    public static function Add() {
+    public static function Add()
+    {
 
     }
 }

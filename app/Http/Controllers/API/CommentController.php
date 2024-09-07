@@ -13,7 +13,7 @@ class CommentController extends Controller
     public function addComment(Request $request)
     {
         $request->validate([
-            'content' => ['required', 'string','max:255'],
+            'content' => ['required', 'string', 'max:255'],
             'movie_id' => ['required', 'exists:movies,id'],
         ]);
         $user = Auth::user();
@@ -59,7 +59,7 @@ class CommentController extends Controller
     public function updateComment(Request $request, $id)
     {
         $request->validate([
-            'content' => ['required', 'string','max:255'],
+            'content' => ['required', 'string', 'max:255'],
         ]);
 
         $user = Auth::user();
@@ -87,7 +87,7 @@ class CommentController extends Controller
     public function getMovieComments($movie_id)
     {
         $movie = Movie::find($movie_id);
-        if(!$movie) {
+        if (!$movie) {
             return response()->json([
                 "status_code" => 404,
                 "status" => "error",
