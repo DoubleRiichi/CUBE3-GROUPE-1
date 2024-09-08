@@ -23,10 +23,17 @@
                 </div>
                 @endif
 
-                <h1>Panneau d'administration</h1>
+               
             </div>
         </div>
-
+        <div class="row">
+            <div class="col text-start">
+                <h1>Panneau d'administration</h1>
+            </div>
+            <div class="col text-end text-bottom">
+                <a href="/admin/users">Liste des Utilisateurs</a>
+            </div>
+        </div>
         <div class="row my-4 bg-white">
             <div class="col col-md-10 table-responsive m-auto">
                 <h2>Historique d'administration</h2>
