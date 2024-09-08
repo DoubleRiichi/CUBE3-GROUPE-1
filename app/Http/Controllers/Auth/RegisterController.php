@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use App\Mail\Email;
+use Illuminate\Support\Facades\Mail;
 use Exception;
 
 class RegisterController extends Controller
@@ -41,7 +43,8 @@ class RegisterController extends Controller
             'badge' => "user",
         ]);
 
-
+        $mail = new Email();
+        Mail::to($user->email)->send($mail);
         auth()->login($user);
 
         return redirect('/home');
@@ -54,7 +57,7 @@ class RegisterController extends Controller
 
     public function handleGoogleCallback()
     {
-        
+
         $googleUser = Socialite::driver('google')->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))->user();
 
             $user = User::where('email', $googleUser->getEmail())->first();
