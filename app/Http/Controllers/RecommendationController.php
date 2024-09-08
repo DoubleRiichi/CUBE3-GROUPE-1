@@ -10,7 +10,7 @@ class RecommendationController extends Controller
 {
     public function showForm()
     {
-        
+
         return view('recommendation-form');
     }
 
@@ -18,20 +18,20 @@ class RecommendationController extends Controller
     {
         $genre = $request->input('genre');
 
-        
+
         $apiUrl = 'https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct';
         $headers = [
             'Authorization' => 'Bearer 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', // Remplacez YOUR_API_KEY par votre clé d'API Hugging Face valide
             'Content-Type' => 'application/json',
         ];
 
-       
+
         $requestData = [
             'inputs' => "Donne-moi quelques recommandations de films dans le genre '$genre', parle en français, s'il te plaît et tu répond via ce format = Bienvenue sur le site MovieShelter voici quelques recommandations : .",
         ];
 
         try {
-           
+
             $client = new Client();
             $response = $client->post($apiUrl, [
                 'headers' => $headers,

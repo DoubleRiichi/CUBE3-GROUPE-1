@@ -13,6 +13,6 @@ class Moderation_Log extends Model
         'action',
         'user_id'
     ];
-    
+
     protected $table = "moderation_logs";
 }

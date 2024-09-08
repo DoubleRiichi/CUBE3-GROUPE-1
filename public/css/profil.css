@@ -16,3 +16,15 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.avatar-container {
+    width:100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.avatar {
+    width: 100%;
+    height: auto;
+}
