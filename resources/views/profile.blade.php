@@ -9,9 +9,9 @@
 
         <p class="fs-4 ">Profil de {{ $user->name }}</p>
         <div class="row">
-            <div class="col-3">
+            <div class="col col-md-5">
                 <div class="avatar-container">
-                    <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="avatar">
+                    <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="avatar img-fluid">
                 </div>
             </div>
             <div class="col text-start">

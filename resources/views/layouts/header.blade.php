@@ -26,6 +26,7 @@
             top: 0px;
             position: fixed;
             left: 0px;
+            z-index: 1;
         }
 
         header .logo-container {
