@@ -42,6 +42,7 @@
         }
     </style>
     <div class="container">
+        <img width="150" src="{{ $message->embed(public_path('Assets/logo_vertical.webp')) }}" alt="logo">
         <h1>Bienvenue sur MovieShelter !</h1>
         <p>Merci de vous être inscrit à notre communauté. Nous sommes ravis de vous avoir parmi nous.</p>
         <p>Commencez à explorer notre vaste collection de films et profitez de l'expérience cinématographique ultime.</p>
