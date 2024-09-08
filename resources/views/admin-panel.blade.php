@@ -59,7 +59,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th scope="row" colspan="2">Nombre de Résultats</th>
+                            <th scope="row" colspan="3">Nombre de Résultats</th>
                             <td>{{count($moderation_log)}}</td>
                         </tr>
                     </tfoot>
@@ -154,7 +154,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th scope="row" colspan="1">Nombre de Résultats</th>
+                            <th scope="row" colspan="2">Nombre de Résultats</th>
                             <td>{{count($banned_users)}}</td>
 
                         </tr>

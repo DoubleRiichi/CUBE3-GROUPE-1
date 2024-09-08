@@ -21,3 +21,4 @@ yarn-error.log
 /mydb.sqlite
 /composer.lock
 movies.sql
+/movieshelter.db
