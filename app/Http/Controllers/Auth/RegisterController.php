@@ -33,13 +33,22 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        // Attribuer un avatar aléatoirement
+        $avatars = [
+            'avatars/default_avatars/Avatar_1.png',
+            'avatars/default_avatars/Avatar_2.png',
+            'avatars/default_avatars/Avatar_3.png',
+            'avatars/default_avatars/Avatar_4.png'
+        ];
+        $randomAvatar = $avatars[array_rand($avatars)];
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'username' => $request->username,
             'permissions' => "user",
-            'avatar' => "avatar",
+            'avatar' => $randomAvatar,
             'badge' => "user",
         ]);
 
@@ -60,27 +69,27 @@ class RegisterController extends Controller
 
         $googleUser = Socialite::driver('google')->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))->user();
 
-            $user = User::where('email', $googleUser->getEmail())->first();
+        $user = User::where('email', $googleUser->getEmail())->first();
 
-            if (!$user) {
+        if (!$user) {
+            // Créer un nouvel utilisateur avec les informations de Google
+            $user = User::create([
+                'name' => $googleUser->getName(),
+                'email' => $googleUser->getEmail(),
+                'password' => Hash::make('default-google-password'), // ou un autre mot de passe sécurisé
+                'username' => $googleUser->getNickname() ?: $googleUser->getName(),
+                'permissions' => 'user',
+                'avatar' => $googleUser->getAvatar(),
+                'badge' => 'user',
+            ]);
 
-                $user = User::create([
-                    'name' => $googleUser->getName(),
-                    'email' => $googleUser->getEmail(),
-                    'password' => Hash::make('default-google-password'), // ou un autre mot de passe sécurisé
-                    'username' => $googleUser->getNickname() ?: $googleUser->getName(),
-                    'permissions' => 'user',
-                    'avatar' => $googleUser->getAvatar(),
-                    'badge' => 'user',
-                ]);
-
-                Auth::login($user);
-                return redirect('/home');
-            } else {
-                // Créez un nouvel utilisateur avec les informations de Google
-                Auth::login($user);
-                return redirect('/home');
-            }
+            Auth::login($user);
+            return redirect('/home');
+        } else {
+            // Connecter l'utilisateur existant
+            Auth::login($user);
+            return redirect('/home');
+        }
 
     }
 }

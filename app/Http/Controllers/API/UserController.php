@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -40,9 +41,29 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function updateUserAvatar(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        if (!$request->hasFile('avatar')) {
+            return response()->json(['error' => 'No file uploaded'], 400);
+        }
+
+        // Supprime l'ancien avatar s'il existe et si différent de default_avatar
+        if ($user->avatar && !str_contains($user->avatar, 'default_avatar')) {
+            Storage::disk('public')->delete($user->avatar);
+        }
+
+        // Stocke le nouvel avatar
+        $path = $request->file('avatar')->store('avatars', 'public');
+        $user->avatar = $path;
+
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            'avatar' => $user->avatar,
+        ], 200);
     }
 
     /**

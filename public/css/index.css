@@ -1,20 +1,39 @@
+/* Conteneur principal pour toutes les listes de films */
+.movie-list-container {
+    padding: 20px;
+}
+
+/* Styles communs pour chaque liste de films */
 .movie-list {
     display: flex;
-    flex-wrap: wrap; /* Empêche le passage à la ligne */
-     /* Défilement horizontal si nécessaire */
-    padding: 0;
-    margin: 1em;
-    justify-content: center;
+    overflow-x: auto; /* Activer le défilement horizontal */
+    padding: 10px 0;
+    gap: 15px; /* Espacement entre les cartes */
 }
+
 .movie-item {
-    flex: 0 0 auto; /* Permet aux éléments de se réduire si nécessaire */
-    margin-right: 10px; /* Marge entre les éléments */
+    flex: 0 0 auto; /* Empêche les cartes de se redimensionner */
+    width: 150px; /* Largeur fixe pour les cartes */
     text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: #f9f9f9;
 }
-.movie-item:last-child {
-    margin-right: 0; /* Pas de marge à droite pour le dernier élément */
-}
-.movie-item img {
-    max-width: 60%;
+
+.movie-poster {
+    width: 100%;
     height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.movie-title {
+    font-size: 14px;
+    margin: 0;
+}
+
+.movie-title a {
+    text-decoration: none;
+    color: inherit;
 }

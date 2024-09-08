@@ -10,16 +10,18 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Exception;
 
-class LoginController extends Controller 
+class LoginController extends Controller
 {
-    public function show() {
+    public function show()
+    {
         return view("login");
     }
 
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
 
         $credentials = $request->validate([
-            'email'    => ['required', 'email'],
+            'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
@@ -36,13 +38,14 @@ class LoginController extends Controller
     }
 
 
-    public function logout(Request $request) {
-        if(Auth::check()) {
+    public function logout(Request $request)
+    {
+        if (Auth::check()) {
             Auth::logout();
- 
+
             $request->session()->invalidate();
-         
-            $request->session()->regenerateToken(); 
+
+            $request->session()->regenerateToken();
         }
 
         return redirect('/');

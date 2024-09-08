@@ -61,26 +61,26 @@ class LoginController extends Controller
 
         if (!$user) {
             return response()->json([
-                'status_code' => 404, 
-                'status' => 'error', 
+                'status_code' => 404,
+                'status' => 'error',
                 'message' => 'Email inconnu'
             ], 404);
         }
 
         if (!Auth::attempt($credentials)) {
             return response()->json([
-                "status_code" => 401, 
-                "status" => 'error', 
+                "status_code" => 401,
+                "status" => 'error',
                 "message" => 'Mot de passe incorrect'
             ], 401);
         }
 
         $tokenResult = $user->createToken('authToken', ['*'], now()->addWeek())->plainTextToken;
         return response()->json([
-            "status_code" => 200, 
-            'status' => 'success', 
-            'access_token' => $tokenResult, 
-            'token_type' => 'Bearer', 
+            "status_code" => 200,
+            'status' => 'success',
+            'access_token' => $tokenResult,
+            'token_type' => 'Bearer',
             'user' => $user
         ], 200);
 

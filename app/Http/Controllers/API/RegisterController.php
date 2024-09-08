@@ -67,13 +67,22 @@ class RegisterController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
+
+        $avatars = [
+            'avatars/default_avatars/Avatar_1.png',
+            'avatars/default_avatars/Avatar_2.png',
+            'avatars/default_avatars/Avatar_3.png',
+            'avatars/default_avatars/Avatar_4.png'
+        ];
+        $randomAvatar = $avatars[array_rand($avatars)];
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'username' => $request->username,
             'permissions' => "user",
-            'avatar' => "avatar",
+            'avatar' => $randomAvatar,
             'badge' => "user",
         ]);
 
@@ -81,10 +90,10 @@ class RegisterController extends Controller
         $token = $user->createToken("auth_token", ['*'], now()->addWeek())->plainTextToken;
 
         return response()->json([
-            "status_code" => 200, 
-            'status' => 'success', 
-            'access_token' => $token, 
-            'token_type' => 'Bearer', 
+            "status_code" => 200,
+            'status' => 'success',
+            'access_token' => $token,
+            'token_type' => 'Bearer',
             'user' => $user
         ], 200);
     }

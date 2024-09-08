@@ -5,9 +5,9 @@
 
 <ul>
     @foreach ($results as $result)
-        <li>
-            <h3> {{ $result->title }} </h3>
-        </li>
+    <li>
+        <h3> {{ $result->title }} </h3>
+    </li>
     @endforeach
 </ul>
 @endsection

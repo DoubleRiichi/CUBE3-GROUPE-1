@@ -1,5 +1,5 @@
 @extends('layouts.mainlayout')
-
+@section ('title', 'Liste de films')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/listing-movies.css') }}">
 <div class="mainbox" id="listing-movies">
@@ -28,5 +28,5 @@
             @endforeach
         </tbody>
     </table>
-</div>  
+</div>
 @endsection
