@@ -24,26 +24,51 @@ class ListingController extends Controller
 
   public function add(Request $request)
   {
-
-    if (Auth::user()->id == $request->user_id) {
-      if (!is_numeric($request->rating))
-        return redirect()->back()->withErrors("Une note doit être une valeur numérique.");
-
-      if ($request->rating > 10 || $request->rating < 0)
-        return redirect()->back()->withErrors("La note ne peut être supérieure à 10 ou inférieure à 0.");
-
-
-      Listing_Movie::InseretMovie(
-        $request->user_id,
-        $request->movie_id,
-        $request->status,
-        $request->rating
-      );
-
-      return redirect("/list/$request->user_id");
-
+    $user = Auth::user();
+    if ($user->id != $request->user_id) {
+      return abort(403, 'Unauthorized action.');
     }
 
-    abort("503");
+    Listing_Movie::create([
+      'user_id' => $user->id,
+      'movie_id' => $request->movie_id,
+      'status' => "À voir",
+    ]);
+
+    return redirect("/movie/$request->movie_id");
+  }
+
+  public function toggleMovieStatus(Request $request, $id)
+  {
+    $user = Auth::user();
+    if ($user->id != $request->user_id) {
+      return abort(403, 'Unauthorized action.');
+    }
+
+    $listItem = Listing_Movie::find($id);
+
+    if ($listItem->status == "Vus") {
+      $listItem->markAsUnseen();
+    } else {
+      $listItem->markAsSeen();
+    }
+    $listItem->save();
+
+    return redirect("/list/$user->id");
+  }
+
+  public function updateRating(Request $request, $id)
+  {
+    $user = Auth::user();
+    if ($user->id != $request->user_id) {
+      return abort(403, 'Unauthorized action.');
+    }
+
+    $listItem = Listing_Movie::find($id);
+    $listItem->rating = $request->rating;
+    $listItem->save();
+
+    return redirect("/list/$user->id");
+
   }
 }

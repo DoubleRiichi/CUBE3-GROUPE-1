@@ -32,20 +32,20 @@
         <div class="row">
             <div class="col ">
                 @if($user->permissions == "banned")
-                    <button class="bluebtn" id="show-comment-form">Déban</button>
-                    <form id="comment-form" method="POST" action="/admin/unban" hidden>
-                @else
-                <button class="bluebtn" id="show-comment-form">Bannir</button>
+                <button class="bluebtn" id="show-comment-form">Déban</button>
+                <form id="comment-form" method="POST" action="/admin/unban" hidden>
+                    @else
+                    <button class="bluebtn" id="show-comment-form">Bannir</button>
 
-                <form id="comment-form" method="POST" action="/admin/ban" hidden>
-                @endif    
-                    @csrf
-                    <input type="text" name="id" id="" value="{{$user->id}}" hidden>
-                    <label for="description">Raison : </label>
-                    <textarea name="description" id="content" cols="100" rows="10"></textarea>
-                    <br>
-                    <button class="bluebtn" type="submit">confirmer</button>
-                </form>
+                    <form id="comment-form" method="POST" action="/admin/ban" hidden>
+                        @endif
+                        @csrf
+                        <input type="text" name="id" id="" value="{{$user->id}}" hidden>
+                        <label for="description">Raison : </label>
+                        <textarea name="description" id="content" cols="100" rows="10"></textarea>
+                        <br>
+                        <button class="bluebtn" type="submit">Confirmer</button>
+                    </form>
             </div>
         </div>
 
