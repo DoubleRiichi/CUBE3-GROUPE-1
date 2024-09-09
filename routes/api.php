@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\UserController;
@@ -32,5 +31,4 @@ Route::get("/movies/nowPlaying", [MovieController::class, "nowPlaying"]);
 Route::get("/movies/upcoming", [MovieController::class, "upcoming"]);
 Route::get("/movies/topPopular", [MovieController::class, "topPopular"]);
 Route::get('/movie/{id}/comments', [CommentController::class, 'getMovieComments']);
-
 Route::get('/checkEmail', [UserController::class, 'checkEmail']);

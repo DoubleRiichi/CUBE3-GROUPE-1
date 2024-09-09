@@ -140,7 +140,7 @@
             <div class="rightSection">
                 <a class="links" href="/home">Accueil</a>
                 <a class="links" href="/search">Recherche</a>
-                <a class="links" href="/recommendation-form">Recommandation</a>
+                <!-- <a class="links" href="/recommendation-form">Recommandation</a> -->
                 <?php use Illuminate\Support\Facades\Auth;
         $user = Auth::check();
         ?>
