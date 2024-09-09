@@ -27,7 +27,7 @@ class LoginController extends Controller
 
         $user = User::where("email", "=", $request->email)->first();
 
-        if($user && $user->permissions == "banned") {
+        if ($user && $user->permissions == "banned") {
             return back()->withErrors([
                 "status" => "Votre compte est banni."
             ]);

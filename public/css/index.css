@@ -6,14 +6,18 @@
 /* Styles communs pour chaque liste de films */
 .movie-list {
     display: flex;
-    overflow-x: auto; /* Activer le défilement horizontal */
+    overflow-x: auto;
+    /* Activer le défilement horizontal */
     padding: 10px 0;
-    gap: 15px; /* Espacement entre les cartes */
+    gap: 15px;
+    /* Espacement entre les cartes */
 }
 
 .movie-item {
-    flex: 0 0 auto; /* Empêche les cartes de se redimensionner */
-    width: 150px; /* Largeur fixe pour les cartes */
+    flex: 0 0 auto;
+    /* Empêche les cartes de se redimensionner */
+    width: 150px;
+    /* Largeur fixe pour les cartes */
     text-align: center;
     border: 1px solid #ddd;
     border-radius: 8px;

@@ -7,7 +7,8 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     padding: 0.5em;
     text-align: left;
 }
@@ -24,4 +25,15 @@ td a {
 
 tr {
     border: 0.1em, solid, black;
+}
+
+.rate-container {
+    display: flex;
+    align-items: center;
+    width: 120px;
+    height: 40px;
+}
+
+#rate-form {
+    margin-right: 10px;
 }
