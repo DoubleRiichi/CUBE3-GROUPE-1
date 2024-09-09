@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string("username")->unique();
-            $table->enum("permissions", ["user", "admin"])->default("user");
+            $table->enum("permissions", ["user", "admin", "banned"])->default("user");
             $table->string('avatar')->nullable();
             $table->string('badge')->nullable();
         });

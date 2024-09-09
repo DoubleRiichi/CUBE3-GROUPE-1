@@ -45,10 +45,11 @@
                             <tr>
                                 <!-- TODO: dynamically fetch posters-->
                                 
-                                <th scope="row"><img height="64" width="64" class="img-fluid rounded" src="{{$user->avatar}}" alt="avatar de {{$user->username}}"></th>
+                                <th scope="row"><img height="64" width="64" class="img-fluid rounded" src="{{asset("storage/$user->avatar")}}" alt="avatar de {{$user->username}}"></th>
                                 <th><a href="/profile/{{$user->name}}">{{$user->name}}</a></th>
-                                <td>{{$user->created_at->format("d/m/Y H:i:s")}}</td>
+                                <td>{{$user->created_at}}</td>
                                 <td>{{$user->permissions}}</td>
+
                             </tr>
                             @endforeach
                             @else
