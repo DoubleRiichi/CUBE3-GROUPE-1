@@ -25,6 +25,14 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
+        $user = User::where("email", "=", $request->email)->first();
+
+        if($user && $user->permissions == "banned") {
+            return back()->withErrors([
+                "status" => "Votre compte est banni."
+            ]);
+        }
+
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 

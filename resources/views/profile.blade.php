@@ -31,9 +31,14 @@
         @if (Auth::check() && Auth::user()->permissions == "admin" && $user->id != Auth::id())
         <div class="row">
             <div class="col ">
+                @if($user->permissions == "banned")
+                    <button class="bluebtn" id="show-comment-form">Déban</button>
+                    <form id="comment-form" method="POST" action="/admin/unban" hidden>
+                @else
                 <button class="bluebtn" id="show-comment-form">Bannir</button>
 
                 <form id="comment-form" method="POST" action="/admin/ban" hidden>
+                @endif    
                     @csrf
                     <input type="text" name="id" id="" value="{{$user->id}}" hidden>
                     <label for="description">Raison : </label>

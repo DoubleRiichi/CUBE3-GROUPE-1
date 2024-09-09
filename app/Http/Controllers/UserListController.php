@@ -30,7 +30,7 @@ class UserListController extends Controller
             return redirect("/");
         }
 
-        $users = User::all();
+        $users = DB::table("users")->select()->get();
         
         return view("user-list", compact("users"));
     }

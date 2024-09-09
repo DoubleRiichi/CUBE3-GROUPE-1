@@ -36,11 +36,16 @@ class MovieDetailsController extends Controller
     $user_id = Auth::id(); #get logged in user id
     $content = filter_var($request->content, FILTER_SANITIZE_SPECIAL_CHARS);
 
+
+
     if (strlen($content) > 2000)
       return redirect()->back()->withErrors("Un commentaire ne peut pas dépasser 2000 charactères !");
     if (empty($request->content)) {
       return redirect()->back()->withErrors("Un commentaire ne peut pas être vide!");
     }
+    if(!$user_id) 
+      return redirect()->back()->withErrors("Vous devez être connecté pour laisser un message!");
+
 
     Comment::InsertComment($user_id, $movie_id, $content);
 
