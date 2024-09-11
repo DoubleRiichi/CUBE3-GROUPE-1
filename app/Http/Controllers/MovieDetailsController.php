@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Listing_Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,13 +21,13 @@ class MovieDetailsController extends Controller
     }
     $comments = Comment::JoinCommentAndUser($movie->id);
 
-    if (Auth::check()) {
-      $current_user = Auth::user();
-    } else {
-      $current_user = null;
-    }
+    $current_user = Auth::check() ? Auth::user() : null;
+    $isInList = false;
 
-    return view("movie-details", compact("movie", "comments", "current_user"));
+    if ($current_user)
+      $isInList = Listing_Movie::where('movie_id', $movie->id)->where('user_id', $current_user->id)->exists();
+
+    return view("movie-details", compact("movie", "comments", "current_user", "isInList"));
   }
 
 
@@ -43,7 +44,7 @@ class MovieDetailsController extends Controller
     if (empty($request->content)) {
       return redirect()->back()->withErrors("Un commentaire ne peut pas être vide!");
     }
-    if(!$user_id) 
+    if (!$user_id)
       return redirect()->back()->withErrors("Vous devez être connecté pour laisser un message!");
 
 

@@ -43,7 +43,9 @@ Route::post("/movie/{movie_id}", [MovieDetailsController::class, "writeComment"]
 
 
 Route::get("/list/{user_id}", [ListingController::class, "show"]);
-Route::post("/list/{user_id}", [ListingController::class, "add"]);
+Route::post("/list", [ListingController::class, "add"]);
+Route::post('/list/toggle/{id}', [ListingController::class, 'toggleMovieStatus']);
+Route::post('/list/rate/{id}', [ListingController::class, 'updateRating']);
 
 Route::get('/profile/{name}', [ProfileController::class, "show"])->name('profile.show');
 Route::get('/profile/{name}/edit', [ProfileController::class, "edit"])->name('profile.edit');

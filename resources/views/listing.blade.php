@@ -19,14 +19,35 @@
                     <a href="{{ url('/movie/' . $item->movie_id) }}">{{ $item->title }}</a>
                 </td>
                 <td>
-                    <input type="checkbox" name="viewed" {{ $item->status == 'Vus' ? 'checked' : '' }} disabled>
+                    <form action="{{ url('/list/toggle/' . $item->id) }}" method="POST">
+                        @csrf
+                        <input type="checkbox" name="viewed" {{ $item->status == 'Vus' ? 'checked' : '' }} {{ !Auth::check() ? 'disabled' : '' }} onchange="this.form.submit()">
+                        <input type="text" name="user_id" hidden value="{{ $user->id }}">
+                    </form>
                 </td>
                 <td>
-                    <span class="listing-note">{{$item->rating}}</span><span class="base"> /10</span>
+                    @if ($item->rating === null)
+                    <span class="base">Non noté</span>
+                    @else
+                    <span class="listing-note">{{ $item->rating }}</span><span class="base"> /10</span>
+                    @endif
                 </td>
+                @if (Auth::check())
+                <td>
+                    <div class="rate-container">
+                        <form hidden id="rate-form-{{ $item->id }}" action="{{ url('/list/rate/' . $item->id) }}" method="POST">
+                            @csrf
+                            <input type="number" name="rating" min="0" max="10" value="{{ $item->rating }}">
+                            <input type="text" name="user_id" hidden value="{{ $user->id }}">
+                        </form>
+                        <button class="bluebtn rate-btn" data-form-id="rate-form-{{ $item->id }}">Noter</button>
+                    </div>
+                </td>
+                @endif
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+<script src="{{asset("js/listing.js")}}"></script>
 @endsection

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class UserListController extends Controller
 {
-    
+
 
     private static function is_admin()
     {
@@ -24,27 +24,29 @@ class UserListController extends Controller
     }
 
 
-    public function show() {
+    public function show()
+    {
 
-        if(!UserListController::is_admin()) {
+        if (!UserListController::is_admin()) {
             return redirect("/");
         }
 
         $users = DB::table("users")->select()->get();
-        
+
         return view("user-list", compact("users"));
     }
 
 
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
 
-        if(!UserListController::is_admin()) {
+        if (!UserListController::is_admin()) {
             return redirect("/");
         }
 
         $params = [];
 
-        if($request->name) {
+        if ($request->name) {
             array_push($params, ["users.name", "LIKE", "%$request->name%"]);
         }
 
