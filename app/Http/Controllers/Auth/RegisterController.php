@@ -83,6 +83,9 @@ class RegisterController extends Controller
                 'badge' => 'user',
             ]);
 
+            $mail = new Email();
+            Mail::to($user->email)->send($mail);
+
             Auth::login($user);
             return redirect('/home');
         } else {
