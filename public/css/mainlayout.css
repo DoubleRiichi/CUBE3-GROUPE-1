@@ -31,6 +31,21 @@ button,
     background-color: #203442;
 }
 
+.googlebtn {
+    background-color: #b1bfd6;
+    width: 145px;
+}
+
+.googlebtn img {
+    height: 1.5em;
+    margin-right: 0.5em;
+}
+
+.googlebtn:hover {
+    color: white;
+    background-color: #8d9fbd;
+}
+
 .redbtn {
     background-color: brown;
 }

@@ -1,20 +1,21 @@
 <?php 
        use App\Models\Movie; ?>
 @extends('layouts.mainlayout')
-@section ('title', 'Profil de ' . $user->name)
+@section ('title', 'Profil de ' . $user->username)
 @section('content')
 <link rel="stylesheet" href="{{ asset("css/profil.css")}}">
 <div class="row" id="profil">
     <div class="col col-md-4 mx-auto bg-light mt-4 p-3 text-center">
 
-        <p class="fs-4 ">Profil de {{ $user->name }}</p>
+        <p class="fs-4 ">Profil de {{ $user->username }}</p>
         <div class="row">
             <div class="col col-md-5">
                 <div class="avatar-container">
-                    <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="avatar img-fluid">
+                    <img src="{{ $user->avatar }}" alt="Avatar" class="avatar img-fluid">
                 </div>
             </div>
             <div class="col text-start">
+                <p>{{ $user->name }}</p>
                 <p>{{ $user->email }}</p>
                 <p>{{$comments->count()}} commentaires postés</p>
                 <p>Inscrit le {{$user->created_at->format("d/m/Y à H:i:s")}}</p>
@@ -66,8 +67,8 @@
                     <div class="comment-header">
                         <a href="/movie/{{$movie->id}}">{{$movie->title}}</a>
                         <div class="comment-date me-2">
-                            <span>Edited: {{$comment->updated_at->format("d-m-Y H:i:s")}}</span>
-                            <span>Posted: {{$comment->created_at->format("d-m-Y H:i:s")}}</span>
+                            <span>Edited: {{$comment->updated_at->format("d/m/Y H:i:s")}}</span>
+                            <span>Posted: {{$comment->created_at->format("d/m/Y H:i:s")}}</span>
                         </div>
                     </div>
                     <p>{{html_entity_decode($comment->content)}}</p>
