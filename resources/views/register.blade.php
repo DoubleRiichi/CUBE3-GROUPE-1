@@ -42,7 +42,7 @@
         </div>
 
     </form>
-    <a href="{{ route('auth.google') }}" class="btn google">
+    <a href="{{ route('auth.google') }}" class="btn googlebtn">
         <img src="{{ asset('Assets/google-logo.png') }}" alt="Google logo">Google
     </a>
 </div>
