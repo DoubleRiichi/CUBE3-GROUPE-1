@@ -71,6 +71,14 @@ class RegisterController extends Controller
 
         $user = User::where('email', $googleUser->getEmail())->first();
 
+        $avatars = [
+            'avatars/default_avatars/Avatar_1.png',
+            'avatars/default_avatars/Avatar_2.png',
+            'avatars/default_avatars/Avatar_3.png',
+            'avatars/default_avatars/Avatar_4.png'
+        ];
+        $randomAvatar = $avatars[array_rand($avatars)];
+
         if (!$user) {
             // Créer un nouvel utilisateur avec les informations de Google
             $user = User::create([
@@ -79,7 +87,7 @@ class RegisterController extends Controller
                 'password' => Hash::make('default-google-password'), // ou un autre mot de passe sécurisé
                 'username' => $googleUser->getNickname() ?: $googleUser->getName(),
                 'permissions' => 'user',
-                'avatar' => $googleUser->getAvatar(),
+                'avatar' => $randomAvatar,
                 'badge' => 'user',
             ]);
 
