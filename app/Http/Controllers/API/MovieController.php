@@ -41,7 +41,7 @@ class MovieController extends Controller
     if ($movie == null) {
       abort(404);
     }
-    $comments = Comment::JoinCommentAndUser($movie->id);
+    $comments = $movie->comments()->with('user')->get();
 
     if (Auth::check()) {
       $current_user = Auth::user();
