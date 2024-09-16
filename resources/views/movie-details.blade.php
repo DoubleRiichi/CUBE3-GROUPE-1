@@ -36,7 +36,7 @@
 
                 <div class="movie-box" id="other-details">
                     <p>Langue Originale : {{$movie->original_language}}</p>
-                    <p>Date de Sortie : {{$movie->release_date}}</p>
+                    <p>Date de Sortie : {{$release_date}}</p>
                     <p>Status : {{$movie->status}}</p>
                     <p>Page Officielle : <a href="{{$movie->homepage}}">{{$movie->homepage}}</a></p>
                     <p>Durée : {{$movie->runtime}} minutes</p>
@@ -82,19 +82,20 @@
         @if(!empty($comments))
         <?php $counter = 0; ?>
         @foreach ($comments as $comment)
+        <?php $user = $comment->user; ?>
         <div class="commentbox row p-2">
             <div class="box col-3 col-md-2" id="user">
-                <span> <a href="/profile/{{$comment->username}}">{{$comment->username}}</a></span>
-                <span> {{substr($comment->user_created_at, 0, 10)}}</span>
-                <img class="img-fluid img-thumbnail" src="{{asset("storage/$comment->avatar")}}" alt="avatar">
-                <span>{{$comment->badge}}</span>
+                <span> <a href="/profile/{{$user->name}}">{{$user->username}}</a></span>
+                <span> {{$user->created_at->format("d/m/Y")}}</span>
+                <img class="img-fluid img-thumbnail" src="{{$user->avatar}}" alt="avatar">
+                <span>{{$user->badge}}</span>
 
             </div>
             <div class="col-md-10 col" id="comment">
                 <div class="row">
                     <div class="comment-date">
-                        <span>Edited: {{$comment->updated_at}}</span>
-                        <span>Posted: {{$comment->created_at}}</span>
+                        <span>Edited: {{$comment->updated_at->format("d/m/Y H:i:s")}}</span>
+                        <span>Posted: {{$comment->created_at->format("d/m/Y H:i:s")}}</span>
                     </div>
                 </div>
                 <div class="row">

@@ -57,13 +57,6 @@ class Comment extends Model
     ])->limit($limit)->get();
   }
 
-  public static function JoinCommentAndUser($movieId)
-  {
-
-    return self::select("comments.*", "users.created_at as user_created_at", "users.updated_at as user_updated_at", "users.name as username", "users.avatar as avatar")
-      ->where("movie_id", "=", $movieId)
-      ->join("users", "users.id", "=", "comments.user_id")->orderByDesc("created_at")->get();
-  }
 
   public static function InsertComment($user_id, $movie_id, $content)
   {

@@ -19,15 +19,16 @@ class MovieDetailsController extends Controller
     if ($movie == null) {
       abort(404);
     }
-    $comments = Comment::JoinCommentAndUser($movie->id);
+    $comments = $movie->comments()->with('user')->get();
 
     $current_user = Auth::check() ? Auth::user() : null;
     $isInList = false;
 
     if ($current_user)
       $isInList = Listing_Movie::where('movie_id', $movie->id)->where('user_id', $current_user->id)->exists();
+    $release_date = date('d/m/Y', strtotime($movie->release_date));
 
-    return view("movie-details", compact("movie", "comments", "current_user", "isInList"));
+    return view("movie-details", compact("movie", "comments", "current_user", "isInList", "release_date"));
   }
 
 
