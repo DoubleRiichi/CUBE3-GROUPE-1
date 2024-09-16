@@ -13,6 +13,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\UserListController;
+use App\Http\Controllers\MovieController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
@@ -65,3 +66,6 @@ Route::get('send-email', [EmailController::class, 'sendEmail']);
 
 Route::get("/admin/users", [UserListController::class, "show"]);
 Route::post("/admin/users", [UserListController::class, "search"]);
+
+Route::get('/movie/{id}', [MovieDetailsController::class, 'show'])->name('movie.show');
+

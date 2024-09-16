@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\Movie;
-use Illuminate\Support\Arr;
 
 class YouTubeController extends Controller
 {
@@ -16,9 +15,6 @@ class YouTubeController extends Controller
 
         // Clé API YouTube
         $apiKey = env('YOUTUBE_API_KEY');
-
-        // Tableau pour stocker les vidéos de YouTube
-        $videos = [];
 
         // Utilisation de Guzzle HTTP pour appeler l'API YouTube pour chaque titre
         $client = new Client();
@@ -33,10 +29,13 @@ class YouTubeController extends Controller
             $video = json_decode($response->getBody()->getContents());
 
             if (isset($video->items[0])) {
-                $videos[] = $video->items[0];
+                // Ajouter l'URL de la vidéo de bande-annonce au modèle Movie
+                $movie->trailerUrl = 'https://www.youtube.com/watch?v=' . $video->items[0]->id->videoId;
+            } else {
+                $movie->trailerUrl = null;
             }
         }
 
-        return view('trailers', compact('videos'));
+        return view('trailers', compact('movies'));
     }
 }
