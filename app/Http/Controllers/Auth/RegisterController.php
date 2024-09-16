@@ -67,7 +67,7 @@ class RegisterController extends Controller
     public function handleGoogleCallback()
     {
 
-        $googleUser = Socialite::driver('google')->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))->user();
+        $googleUser = Socialite::driver('google')->stateless()->user();
 
         $user = User::where('email', $googleUser->getEmail())->first();
 
