@@ -1,7 +1,3 @@
-div#listing-movies {
-    width: 50%;
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -36,4 +32,8 @@ tr {
 
 #rate-form {
     margin-right: 10px;
+}
+
+.rate-input {
+    width: 75px;
 }
