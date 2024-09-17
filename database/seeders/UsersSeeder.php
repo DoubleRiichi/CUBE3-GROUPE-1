@@ -13,11 +13,26 @@ class UsersSeeder extends Seeder
             'username' => 'admin',
             'password' => bcrypt('admin'),
             'email' => 'admin@admin.fr',
-            'right' => 'admin',
-            'avatar' => 'avatars/default_avatars/Avatar_1.jpg',
+            'permissions' => 'admin',
+            'avatar' => 'avatars/default_avatars/Avatar_1.png',
+            'name' => 'admin',
             'badge' => 'newbie',
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        DB::table('users')->insert([
+            'username' => 'user',
+            'password' => bcrypt('user'),
+            'email' => 'user@user.fr',
+            'permissions' => 'user',
+            'avatar' => 'avatars/default_avatars/Avatar_1.png',
+            'name' => 'user',
+            'badge' => 'newbie',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+
     }
 }
