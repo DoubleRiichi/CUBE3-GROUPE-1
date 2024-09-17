@@ -31,7 +31,7 @@
                 <h1>Panneau d'administration</h1>
             </div>
             <div class="col text-end text-bottom">
-                <a href="/admin/users">Liste des Utilisateurs</a>
+                <a class='btn bluebtn' href="/admin/users">Liste des Utilisateurs</a>
             </div>
         </div>
         <div class="row my-4 bg-white">
