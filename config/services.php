@@ -1,5 +1,11 @@
 <?php
 
+if(isset($_SERVER['SERVER_ADDR']) && isset($_SERVER['SERVER_PORT'])) {
+    $callback_url = "http://" .  $_SERVER['SERVER_ADDR'] . ":" . $_SERVER['SERVER_PORT'] . "/auth/google/callback";
+} else {
+    $callback_url = "http://localhost:8000/auth/google/callback";
+}
+
 return [
 
     /*
@@ -34,5 +40,12 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => $callback_url,
+
+],
 
 ];

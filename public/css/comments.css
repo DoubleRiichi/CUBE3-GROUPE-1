@@ -1,0 +1,38 @@
+.box {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+/* .box#user {
+    align-self: flex-start;
+    width: 10%;
+    padding: 0.2em;
+} */
+
+.box#comment {
+    flex-grow: 1;
+    align-self: flex-end;
+    width: 88%;
+}
+
+.comment-text {
+    border: 0.1em solid black;
+    padding: 0.4em;
+    min-height: 10em;
+    text-wrap: wrap;
+}
+
+.no-comment {
+    font-size: 15px;
+}
+
+
+.comments-action {
+    display: flex;
+    flex-direction: row;
+}
+
+.comments-action button {
+    max-height: 34.67px;
+}

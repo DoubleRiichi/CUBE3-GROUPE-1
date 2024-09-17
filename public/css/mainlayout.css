@@ -1,0 +1,92 @@
+button,
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.5em;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.bluebtn {
+    background-color: #35607c;
+}
+
+.bluebtn:hover {
+    color: white;
+    background-color: #203442;
+}
+
+.googlebtn {
+    background-color: #b1bfd6;
+    width: 145px;
+}
+
+.googlebtn img {
+    height: 1.5em;
+    margin-right: 0.5em;
+}
+
+.googlebtn:hover {
+    color: white;
+    background-color: #8d9fbd;
+}
+
+.redbtn {
+    background-color: brown;
+}
+
+.redbtn:hover {
+    background-color: rgb(83, 23, 23);
+}
+
+.commentbox {
+    padding-left: 1em;
+    background-color: white;
+    border: 0.1em solid black;
+    margin-bottom: 1em;
+}
+
+.commentbox a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: black;
+}
+
+.commentbox a:hover {
+    font-style: italic;
+    color: blue;
+}
+
+.comment-date {
+    float: right;
+    text-align: right;
+    font-style: italic;
+    color: rgba(95, 84, 84, 0.685);
+}
+
+.inline-form {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    margin: 0.5em;
+}
+
+#error-box {
+    color: rgb(187, 50, 50);
+    font-style: italic;
+    background-color: white;
+    border: 0.1em solid, rgb(187, 50, 50);
+    padding: 1em;
+    margin-top: 4em;
+}

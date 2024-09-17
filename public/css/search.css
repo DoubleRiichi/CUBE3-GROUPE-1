@@ -1,0 +1,46 @@
+thead,
+tfoot {
+  background-color: rgb(237, 156, 151) !important;
+}
+
+
+td:last-of-type {
+  text-align: center !important;
+}
+
+tbody>tr:nth-of-type(even) {
+  background-color: rgb(237 238 242) !important;
+}
+
+tfoot th {
+  text-align: right;
+}
+
+tfoot td {
+  font-weight: bold !important;
+  background-color: whitesmoke !important;
+}
+
+.movie-link {
+  text-decoration: none;
+  color: black;
+}
+
+.movie-link:hover {
+  font-style: italic;
+  color: blue;
+}
+
+th a {
+  position: relative;
+}
+
+th a span {
+  position: absolute;
+  display: none;
+  z-index: 99;
+}
+
+th a:hover span {
+  display: block;
+}

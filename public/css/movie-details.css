@@ -1,0 +1,51 @@
+#movie {
+    display: flex;
+    flex-wrap: wrap;
+    height: 80%;
+}
+
+#movie img {
+    display: flex;
+    justify-self: left;
+    height: auto;
+}
+
+#movie h2 span {
+    font-size: medium;
+    color: rgba(100, 96, 96, 0.952);
+    font-style: italic;
+}
+
+.movie-details {
+    justify-content: left;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.movie-details p {
+    margin: 1em;
+    text-wrap: wrap;
+}
+
+.movie-box {
+    border: 0.2em solid black;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 0.5em;
+    flex-direction: column;
+}
+
+#add-list-area {
+    display: flex;
+    flex-direction: column;
+    margin: 0.2em;
+}
+
+#inline-submit-btn {
+    width: 5em;
+}
+
+#add-list-note {
+    width: 3em;
+}

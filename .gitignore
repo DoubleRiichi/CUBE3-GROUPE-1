@@ -18,3 +18,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/mydb.sqlite
+/composer.lock
+movies.sql
+/movieshelter.db

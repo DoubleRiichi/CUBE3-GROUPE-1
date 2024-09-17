@@ -1,0 +1,49 @@
+/* Conteneur principal pour toutes les listes de films */
+.movie-list-container {
+    padding: 20px;
+}
+
+/* Styles communs pour chaque liste de films */
+.movie-list {
+    display: flex;
+    overflow-x: auto;
+    /* Activer le défilement horizontal */
+    padding: 10px 0;
+    gap: 15px;
+    /* Espacement entre les cartes */
+}
+
+.movie-item {
+    flex: 0 0 auto;
+    /* Empêche les cartes de se redimensionner */
+    width: 150px;
+    /* Largeur fixe pour les cartes */
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+.movie-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+.movie-poster {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.movie-title {
+    font-size: 14px;
+    margin: 0;
+}
+
+.movie-title a {
+    text-decoration: none;
+    color: inherit;
+}
