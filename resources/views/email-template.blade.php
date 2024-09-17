@@ -47,7 +47,11 @@
     <p>Commencez à explorer notre vaste collection de films et profitez de l'expérience cinématographique ultime.</p>
     <p>Si vous avez des questions ou besoin d'aide, n'hésitez pas à contacter notre équipe de support.</p>
     <p>Bon visionnage !</p>
+    @if (isset($_SERVER['SERVER_ADDR']))
     <a href="http://{{$_SERVER['SERVER_ADDR']}}/home" class="button">Visiter MovieShelter</a>
+    @else
+    <a href="http://localhost:8000/home" class="button">Visiter MovieShelter</a>
+    @endif
 </div>
 </body>
 </html>
