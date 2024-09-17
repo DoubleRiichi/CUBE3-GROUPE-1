@@ -47,7 +47,7 @@
     <p>Commencez à explorer notre vaste collection de films et profitez de l'expérience cinématographique ultime.</p>
     <p>Si vous avez des questions ou besoin d'aide, n'hésitez pas à contacter notre équipe de support.</p>
     <p>Bon visionnage !</p>
-    <a href="http://127.0.0.1:8000/home" class="button">Visiter MovieShelter</a>
+    <a href="http://{{$_SERVER['SERVER_ADDR']}}/home" class="button">Visiter MovieShelter</a>
 </div>
 </body>
 </html>
