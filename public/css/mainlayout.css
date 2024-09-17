@@ -1,13 +1,3 @@
-div.mainbox {
-    background-color: whitesmoke;
-    border-radius: 0.5em;
-    padding: 1em;
-    width: 80%;
-    margin: auto;
-    margin-top: 6em;
-    margin-bottom: 6em;
-}
-
 button,
 .btn {
     display: inline-flex;
