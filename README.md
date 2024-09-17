@@ -59,7 +59,7 @@ Par défaut deux comptes sont créés, un compte utilisateur et un compte admini
 - email: user@user.fr
 - password: user
 
-# Scripts TMDB utilisation
+## Scripts TMDB utilisation
 Le projet utilise un script PHP pour récupérer les détails de films mis à disposition par l'API de TMDB. Des exports hebdomadaires sont générés par TMDB, ces exports contiennent un jeu de données sommaire pouvant servir de point de départ pour une utilisation de l'api plus poussée. Il n'est pas nécessaire de disposer d'une clé API pour les consulter. 
 
 *Ligne d'un export hebdomadaire*
