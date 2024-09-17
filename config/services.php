@@ -1,5 +1,11 @@
 <?php
 
+if(isset($_SERVER['SERVER_ADDR']) && isset($_SERVER['SERVER_PORT'])) {
+    $callback_url = "http://" .  $_SERVER['SERVER_ADDR'] . ":" . $_SERVER['SERVER_PORT'] . "/auth/google/callback";
+} else {
+    $callback_url = "http://localhost:8000/auth/google/callback";
+}
+
 return [
 
     /*
@@ -38,7 +44,8 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => env('GOOGLE_REDIRECT_URI'),
+        'redirect' => $callback_url,
+
 ],
 
 ];

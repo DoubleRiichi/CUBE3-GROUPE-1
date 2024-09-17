@@ -1,5 +1,11 @@
 <?php
 
+if(isset($_SERVER['SERVER_ADDR'])) {
+    $url = "http://" .  $_SERVER['SERVER_ADDR'];
+} else {
+    $url = env("APP_URL", "http://localhost");
+}
+
 return [
 
     /*
@@ -52,7 +58,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
+    'url' =>  $url,
+=======
     'url' =>  env('APP_URL', 'http://localhost'),
+>>>>>>> 0ea9775caeedaf31d6adc7ec70c992beba3b099d
 
     /*
     |--------------------------------------------------------------------------
