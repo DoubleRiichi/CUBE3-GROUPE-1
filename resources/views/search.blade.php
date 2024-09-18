@@ -6,7 +6,7 @@
 
 <div class=" mt-4  row" id="search-area">
     <div class="col-12 bg-light col-md-6 m-auto">
-        <form class="inline-form" id="search-form" method="POST" action="/search/">
+        <form class="inline-form" id="search-form" method="POST" action="/search">
             @csrf
 
             <label class="form-label" for="title">Titre : </label>
